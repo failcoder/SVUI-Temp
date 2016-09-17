@@ -1,0 +1,22 @@
+## Interface: 70000
+## Author: Munglunch, Azilroka, Sortokk
+## Version: 1.3.3
+## Title: |cffFF9900SuperVillain UI: |r|cffFFEF00Skins|r
+## Notes: SVUI [|cff9911FFSkins System and AddOn Frames|r].
+## SavedVariables: SVUIUI_STYLE_GLOBAL
+## SavedVariablesPerCharacter: SVUIUI_STYLE_PROFILE, SVUIUI_STYLE_PRIVATE
+## RequiredDeps: SVUI_!Core
+## OptionalDeps: LibSharedMedia-3.0
+## X-SVUIName: Skins
+## X-SVUISchema: Skins
+## X-Email: munglunch@gmail.com
+## X-Website: http://www.supervillainui.com
+## X-Donate: PayPal:munglunch@gmail.com
+## X-License: MIT
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: r20160818004854
+## X-Curse-Project-Name: SuperVillain UI: Skins
+## X-Curse-Project-ID: supervillain-ui-skins
+## X-Curse-Repository-ID: wow/supervillain-ui-skins/mainline
+
+SVUI_Skins.xml

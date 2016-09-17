@@ -1,0 +1,30 @@
+failcoder:
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+Steven Jackson:
+	- fixed MOD error
+	- final prep for master profiles. revised the debuff highlight texture
+	- many fixes
+	- 1.2.1 update for patch 6.2.1
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- many QoL improvements
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- build update
+	- updating with core
+	- toc update
+	- second commit
+	- first commit

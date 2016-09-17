@@ -1,0 +1,50 @@
+failcoder:
+	- Fixed shaman/mage/pally/rogue resources
+	Nameplates are usable again though for now they are very stripped down
+	inventory bugs fixed
+	added all the new power types to color options
+	other misc bugs fixed
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- Fixed for 6.2.2
+	- Screen scaling fixed. Adjusted profile options layout.
+	- Added shared options to profile settings (for Docks and Chat).
+	Fixed ActionBar vehicle assignments.
+	Changed a few options menu layouts (Profiles, ActionBars)
+	Fixed bad skinning on Raid Leader docklet
+	- Misc fixes and updates...
+Steven Jackson:
+	- toc update
+	- toc update
+	- 1.2.1 update for patch 6.2.1
+	- 1.2.1 update for patch 6.2.1
+	- small adjustments to skins, chat anchoring, zone ability button styling and nameplate options
+	- layout updates
+	- Added healer tracking
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- 1.1.95 going live
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- version update, fixed bodyguard states. Quest item buttons update to performance. Scaling changes
+	- adjusted options
+	- many QoL improvements
+	- revision 1.1.08
+	- updates
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- build update
+	- updating with core
+	- toc update
+	- fix for file struct
+	- First commit

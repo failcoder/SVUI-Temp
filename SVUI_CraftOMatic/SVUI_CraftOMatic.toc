@@ -1,0 +1,20 @@
+## Interface: 70000
+## Author: Munglunch
+## Version: 1.0.09
+## Title: |cffFF9900SVUI Plugin: |r|cffFF69B4Craft-O-Matic|r
+## Notes: Supervillain UI [|cff9911FFProfession Tools|r].
+## RequiredDeps: SVUI_!Core
+## OptionalDeps: LibSharedMedia-3.0
+## X-SVUIName: Craft-O-Matic
+## X-SVUISchema: CraftOMatic
+## X-Email: munglunch@gmail.com
+## X-Website: http://www.supervillainui.com
+## X-Donate: PayPal:munglunch@gmail.com
+## X-License: MIT
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: r20160725005946
+## X-Curse-Project-Name: SuperVillain UI: Craft-O-Matic
+## X-Curse-Project-ID: supervillain-ui-craft-o-matic
+## X-Curse-Repository-ID: wow/supervillain-ui-craft-o-matic/mainline
+
+SVUI_CraftOMatic.xml

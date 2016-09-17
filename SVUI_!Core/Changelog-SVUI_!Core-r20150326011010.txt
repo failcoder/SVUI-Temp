@@ -1,0 +1,67 @@
+Steven Jackson:
+	- mail minion update
+	- rep bar and event changes
+	- rep bar and event changes
+	- AceGUI updates
+	- Changes for new Aura Procs
+	- revision 1.1.08
+	- small updates
+	- Some unit aura and basic frame adjustments
+	- ActionBar fix
+	- customClassColor and debugging fixes
+	- time report fixed
+	- time report fixed
+	- odd errors fixed, filters saving again
+	- datatext updates
+	- datatext updates
+	- updated some presets, fixed auras by count, fixed totembars
+	- Changes for transfer wizard are now set
+	- update to data cleaning functions, reset and fix of report texts
+	- final touchup to libs
+	- Final revision of the Ace overrides
+	- Update to Ace hacks
+	- lib changes
+	- rollback on embedded libdatabroker
+	- rollback on embedded libdatabroker
+	- lib changes
+	- fixed dockable options
+	- minor version update, revised profiles and data
+	- Fixed bad aurabar filter crashes and colorpicker crashes
+	- toc update
+	- Last minute adjustments to default presets
+	- toc update
+	- Cleaning bad globals and option lua errors
+	- updates
+	- Updated chat, maps and more
+	- Updated chat, maps and more
+	- toc update
+	- fixes for automations, and custom profiles
+	- toc update
+	- ace modifications
+	- Fixed exp bug and custom profiles
+	- Fixed profiles, filters and lua errors
+	- Fixed profiles, filters and vendoring
+	- api updates
+	- transfer wizard code added
+	- api updates
+	- api updates
+	- Styling update of quest items and garrison panels
+	- build update
+	- issue #60 and #61 fixed
+	- release 1.0.04
+	- fixed more installer issues, visual adjustments
+	- Combat closing of anchors fixed
+	- toc updates
+	- colors, installer, profiles updated
+	- installer issues fixed
+	- more updates
+	- toc update
+	- pkgmeta update
+	- fix for struct part 2
+	- fix for file struct
+	- changing for packager
+	- Updating to the new core
+	- Cleaning up
+Munglunch:
+	- 5.4.2
+	- First Commit

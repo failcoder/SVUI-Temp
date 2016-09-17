@@ -1,0 +1,120 @@
+failcoder:
+	- Demon Hunters fixed
+	- Fixed shaman/mage/pally/rogue resources
+	Nameplates are usable again though for now they are very stripped down
+	inventory bugs fixed
+	added all the new power types to color options
+	other misc bugs fixed
+	- Fixed class resources for warlock/druid/dk and rogues
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- Updated raid group layout for vertical settings
+	- -Updated skins for macro menu,trainers and some addon docks to adjust bad sizing/layering.
+	-Adjusted size and anchors for auto-popup quest notifications in the quest tracker
+	
+	-Fixed and adjusted raid/party/raidpet frame layout anchoring. They will no longer scatter when removing groups or showing labels
+	
+	-Adjusted raid debuff appearances. Icons will properly hide name text when shown to keep the frames from being unreadably cluttered. Colored overlays are FAR less overpowering now and will properly color the frame border .
+	
+	-Fixed several issues with tooltips when mousing over units that for one reason or another are not yet broadcasting their name/class/level etc... this was causing terrible errors.
+	
+	-Fixed several token readouts in data texts (reports). Conquest for example will now properly display week max values.
+	
+	-Adjusted the way that capture bars are handled and anchored. They were dancing around the screen before.
+	
+	-Made many logical changes to dock functionality. (internal)
+	- v1.2.67
+	-Adjusted skin for Storyline
+	-Fixed an issue with popup quest completion
+	-Added admirals compass to hearth button options
+	
+	v1.2.65
+	-Adding full support and skinning of Storyline to SVUI_Skins
+	-Fixed an issue with shared data regarding embeds (addon docks)
+	-Stage 1 of some needed code optimizations
+	- Added ability to set vehicle bar other than bar 1.
+	Added toggle for "!" aggro icon.
+	Adjusted layout of auctionhouse skin.
+	Fixed positioning of craft and fight o-matics.
+	- Quest popups fixed. Combat fader adjusted for player frame
+	- Fixed LFG/LFD role skins, chat handlers, data retention and rarity coloring on character screen slots and tooltips
+	- fixed portrait bug (?)
+	- Stagger bar options fixed
+	- Misc fixes and updates...
+Steven Jackson:
+	- final prep for master profiles. revised the debuff highlight texture
+	- fixed issue preventing party/raid frames from being able to preview
+	- misc fixes and lib updates
+	- misc fixes and lib updates
+	- misc fixes
+	- aura filters fixed
+	- misc fixes
+	- added multi-realm support to profiles
+	- deathknight and rogue additions
+	- toc update
+	- many fixes
+	- more chat fixes, unit frame raid/party adjustment
+	- game menu frame level adjustment and added a toggle for using party frames for 5-man raids
+	- fixed dock click functions and several bugs
+	- 1.2.1 update for patch 6.2.1
+	- layout updates
+	- layout updates
+	- party frames now have raid debuffs
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- 1.1.95 going live
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- druid changes
+	- daily changes and enhancements
+	- Power bar detachment added
+	- version update, fixed bodyguard states. Quest item buttons update to performance. Scaling changes
+	- portrait fix
+	- Added bodyguard frame and fixed chat issues
+	- Added bodyguard frame and fixed chat issues
+	- Added bodyguard frame and fixed chat issues
+	- QoL changes:
+	XP report has click-options for formatting now.
+	Fixed bad show/hide states for bottom left dock items.
+	Added new color option for unit health backdrops
+	- QoL changes:
+	XP report has click-options for formatting now.
+	Fixed bad show/hide states for bottom left dock items.
+	Added new color option for unit health backdrops
+	- QoL changes
+	- many new fixes
+	- many QoL improvements
+	- many QoL improvements
+	- totems and framelevel adjustments
+	- Some aura fixes for filtering
+	- revision 1.1.08
+	- health bg update
+	- Some unit aura and basic frame adjustments
+	- customClassColor and debugging fixes
+	- All bugs squashed
+	- oUF_ActionPanel bug fixed
+	- border changes
+	- updated some presets, fixed auras by count, fixed totembars
+	- adjusted portrait and power element styling
+	- minor version update, revised profiles and data
+	- power bars hide when not needed
+	- Cleaning bad globals and optimizing code
+	- updates
+	- Fixed profiles, filters and lua errors
+	- api updates
+	- build update
+	- release 1.0.04
+	- updating with core
+	- toc update
+	- color updates
+	- fix for file struct
+	- First commit

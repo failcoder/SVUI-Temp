@@ -1,0 +1,90 @@
+failcoder:
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- -Updated skins for macro menu,trainers and some addon docks to adjust bad sizing/layering.
+	-Adjusted size and anchors for auto-popup quest notifications in the quest tracker
+	
+	-Fixed and adjusted raid/party/raidpet frame layout anchoring. They will no longer scatter when removing groups or showing labels
+	
+	-Adjusted raid debuff appearances. Icons will properly hide name text when shown to keep the frames from being unreadably cluttered. Colored overlays are FAR less overpowering now and will properly color the frame border .
+	
+	-Fixed several issues with tooltips when mousing over units that for one reason or another are not yet broadcasting their name/class/level etc... this was causing terrible errors.
+	
+	-Fixed several token readouts in data texts (reports). Conquest for example will now properly display week max values.
+	
+	-Adjusted the way that capture bars are handled and anchored. They were dancing around the screen before.
+	
+	-Made many logical changes to dock functionality. (internal)
+	- v1.2.67
+	-Adjusted skin for Storyline
+	-Fixed an issue with popup quest completion
+	-Added admirals compass to hearth button options
+	
+	v1.2.65
+	-Adding full support and skinning of Storyline to SVUI_Skins
+	-Fixed an issue with shared data regarding embeds (addon docks)
+	-Stage 1 of some needed code optimizations
+	- Added shared options to profile settings (for Docks and Chat).
+	Fixed ActionBar vehicle assignments.
+	Changed a few options menu layouts (Profiles, ActionBars)
+	Fixed bad skinning on Raid Leader docklet
+	- Added ability to set vehicle bar other than bar 1.
+	Added toggle for "!" aggro icon.
+	Adjusted layout of auctionhouse skin.
+	Fixed positioning of craft and fight o-matics.
+	- Fixed LFG/LFD role skins, chat handlers, data retention and rarity coloring on character screen slots and tooltips
+	- Update to Chat frame alignments and arrow button history selections in the editbox
+	- Update to use new API and skin
+	- Misc fixes and updates...
+Steven Jackson:
+	- improvements to chat frames allowing them to more effectively save selected channel/message type selections
+	- final prep for master profiles. revised the debuff highlight texture
+	- toc update
+	- chat vanishing fix revised
+	- misc fixes
+	- fixed item link displays
+	- fixed chat vanishing issue
+	- many fixes
+	- more chat fixes
+	- 1.2.1 update for patch 6.2.1
+	- 1.2.1 update for patch 6.2.1
+	- small adjustments to skins, chat anchoring, zone ability button styling and nameplate options
+	- quick patch
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- iLevels, buff casters, chat url links and art updates.
+	- hotfixes
+	- 1.1.95 going live
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- version update, fixed bodyguard states. Quest item buttons update to performance. Scaling changes
+	- Added bodyguard frame and fixed chat issues
+	- QoL changes: fixed bad channel handling
+	- updates to chat filtering and spellbook skins. credits adjusted
+	- chat whispers fixed
+	- chat bubbles fixed
+	- many QoL improvements
+	- AceGUI updates
+	- revision 1.1.08
+	- short channel adjustment
+	- chat expanding from docks fixed
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- added shortening option
+	- new features
+	- fixed twitter functionality
+	- build update
+	- updating with core
+	- toc update
+	- fix for file struct
+	- First commit

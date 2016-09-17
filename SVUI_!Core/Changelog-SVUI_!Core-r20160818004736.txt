@@ -1,0 +1,200 @@
+failcoder:
+	- Demon Hunters fixed
+	- Fixed shaman/mage/pally/rogue resources
+	Nameplates are usable again though for now they are very stripped down
+	inventory bugs fixed
+	added all the new power types to color options
+	other misc bugs fixed
+	- Fixed class resources for warlock/druid/dk and rogues
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- -Updated skins for macro menu,trainers and some addon docks to adjust bad sizing/layering.
+	-Adjusted size and anchors for auto-popup quest notifications in the quest tracker
+	
+	-Fixed and adjusted raid/party/raidpet frame layout anchoring. They will no longer scatter when removing groups or showing labels
+	
+	-Adjusted raid debuff appearances. Icons will properly hide name text when shown to keep the frames from being unreadably cluttered. Colored overlays are FAR less overpowering now and will properly color the frame border .
+	
+	-Fixed several issues with tooltips when mousing over units that for one reason or another are not yet broadcasting their name/class/level etc... this was causing terrible errors.
+	
+	-Fixed several token readouts in data texts (reports). Conquest for example will now properly display week max values.
+	
+	-Adjusted the way that capture bars are handled and anchored. They were dancing around the screen before.
+	
+	-Made many logical changes to dock functionality. (internal)
+	- Forcing a commit
+	- v1.2.67
+	-Adjusted skin for Storyline
+	-Fixed an issue with popup quest completion
+	-Added admirals compass to hearth button options
+	
+	v1.2.65
+	-Adding full support and skinning of Storyline to SVUI_Skins
+	-Fixed an issue with shared data regarding embeds (addon docks)
+	-Stage 1 of some needed code optimizations
+	- Screen scaling fixed. Adjusted profile options layout.
+	- Added shared options to profile settings (for Docks and Chat).
+	Fixed ActionBar vehicle assignments.
+	Changed a few options menu layouts (Profiles, ActionBars)
+	Fixed bad skinning on Raid Leader docklet
+	- Added ability to set vehicle bar other than bar 1.
+	Added toggle for "!" aggro icon.
+	Adjusted layout of auctionhouse skin.
+	Fixed positioning of craft and fight o-matics.
+	- Quest popups fixed. Combat fader adjusted for player frame
+	- More small visual changes. CollectionJournal is now movable (draggable). Quest tracker row heights are now calculated properly off of the font size. Added better descriptions to map options.
+	- Fixed LFG/LFD role skins, chat handlers, data retention and rarity coloring on character screen slots and tooltips
+	- Fixed LFG/LFD role skins, chat handlers, data retention and rarity coloring on character screen slots and tooltips
+	- Update to Chat frame alignments and arrow button history selections in the editbox
+	- API, alert and dock improvements
+	- Misc fixes and updates...
+Steven Jackson:
+	- Misc internal fixes
+	- final prep for master profiles. revised the debuff highlight texture
+	- frame mover/grid updates. Added topright dock frame back into the framework.
+	- misc fixes and lib updates
+	- misc fixes and lib updates
+	- misc fixes and lib updates
+	- aura filters fixed and new NPC models added
+	- chat vanishing fix revised
+	- misc fixes
+	- added multi-realm support to profiles
+	- Updates to dock levels and backend code
+	- fixed chat vanishing issue
+	- many fixes
+	- last minute adjustments
+	- game menu frame level adjustment and added a toggle for using party frames for 5-man raids
+	- fixed dock click functions and several bugs
+	- small adjustments to simple theme
+	- 1.2.1 update for patch 6.2.1
+	- 1.2.1 update for patch 6.2.1
+	- small adjustments to friends listings
+	- small adjustments to skins, chat anchoring, zone ability button styling and nameplate options
+	- hotfix for merchant bug
+	- layout updates
+	- layout updates
+	- quick patch
+	- quick patch
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- hotfixes
+	- iLevel options added
+	- iLevels, buff casters, chat url links and art updates.
+	- hotfixes
+	- 1.1.95 going live
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- oops
+	- daily changes and enhancements
+	- daily changes and enhancements
+Munglunch:
+	- Screen scaling fixed
+Steven Jackson:
+	- xp and slash command update
+	- version update, fixed bodyguard states. Quest item buttons update to performance. Scaling changes
+	- Added bodyguard frame and fixed chat issues
+	- QoL changes:
+	XP report has click-options for formatting now.
+	Fixed bad show/hide states for bottom left dock items.
+	Added new color option for unit health backdrops
+	- many new fixes
+	- updates to chat filtering and spellbook skins. credits adjusted
+	- fix for exp mouse over event
+	- toc update
+	- new fun stuff
+	- SCT updates
+Munglunch:
+	- toc update, added open-dyslexic font, zygor conflict fixed and docklet tooltips fixed
+Steven Jackson:
+	- Fixed AFK bug preventing the animation from hiding when needed.
+	Added remaining henchmen to the (ESC) game menu feature.
+	other minor changes...
+	- version change
+	- many QoL improvements
+	- mail minion update
+	- rep bar and event changes
+	- rep bar and event changes
+	- AceGUI updates
+	- Changes for new Aura Procs
+	- revision 1.1.08
+	- small updates
+	- Some unit aura and basic frame adjustments
+	- ActionBar fix
+	- customClassColor and debugging fixes
+	- time report fixed
+	- time report fixed
+	- odd errors fixed, filters saving again
+	- datatext updates
+	- datatext updates
+	- updated some presets, fixed auras by count, fixed totembars
+	- Changes for transfer wizard are now set
+	- update to data cleaning functions, reset and fix of report texts
+	- final touchup to libs
+	- Final revision of the Ace overrides
+	- Update to Ace hacks
+	- lib changes
+	- rollback on embedded libdatabroker
+	- rollback on embedded libdatabroker
+	- lib changes
+	- fixed dockable options
+	- minor version update, revised profiles and data
+	- Fixed bad aurabar filter crashes and colorpicker crashes
+	- toc update
+	- Last minute adjustments to default presets
+	- toc update
+	- Cleaning bad globals and option lua errors
+	- updates
+	- Updated chat, maps and more
+	- Updated chat, maps and more
+	- toc update
+	- fixes for automations, and custom profiles
+	- toc update
+	- ace modifications
+	- Fixed exp bug and custom profiles
+	- Fixed profiles, filters and lua errors
+	- Fixed profiles, filters and vendoring
+	- api updates
+	- transfer wizard code added
+	- api updates
+	- api updates
+	- Styling update of quest items and garrison panels
+	- build update
+	- issue #60 and #61 fixed
+	- release 1.0.04
+	- fixed more installer issues, visual adjustments
+	- Combat closing of anchors fixed
+	- toc updates
+	- colors, installer, profiles updated
+	- installer issues fixed
+	- more updates
+	- toc update
+	- pkgmeta update
+	- fix for struct part 2
+	- fix for file struct
+	- changing for packager
+	- Updating to the new core
+	- Cleaning up
+Munglunch:
+	- 5.4.2
+	- First Commit

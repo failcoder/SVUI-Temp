@@ -1,0 +1,25 @@
+Steven Jackson:
+	- totems and framelevel adjustments
+	- Some aura fixes for filtering
+	- revision 1.1.08
+	- health bg update
+	- Some unit aura and basic frame adjustments
+	- customClassColor and debugging fixes
+	- All bugs squashed
+	- oUF_ActionPanel bug fixed
+	- border changes
+	- updated some presets, fixed auras by count, fixed totembars
+	- adjusted portrait and power element styling
+	- minor version update, revised profiles and data
+	- power bars hide when not needed
+	- Cleaning bad globals and optimizing code
+	- updates
+	- Fixed profiles, filters and lua errors
+	- api updates
+	- build update
+	- release 1.0.04
+	- updating with core
+	- toc update
+	- color updates
+	- fix for file struct
+	- First commit

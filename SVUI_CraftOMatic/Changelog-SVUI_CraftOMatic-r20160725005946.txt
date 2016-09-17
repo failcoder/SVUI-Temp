@@ -1,0 +1,38 @@
+failcoder:
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- v1.2.67
+	-Adjusted skin for Storyline
+	-Fixed an issue with popup quest completion
+	-Added admirals compass to hearth button options
+	
+	v1.2.65
+	-Adding full support and skinning of Storyline to SVUI_Skins
+	-Fixed an issue with shared data regarding embeds (addon docks)
+	-Stage 1 of some needed code optimizations
+	- Added ability to set vehicle bar other than bar 1.
+	Added toggle for "!" aggro icon.
+	Adjusted layout of auctionhouse skin.
+	Fixed positioning of craft and fight o-matics.
+Steven Jackson:
+	- Added nats drinking hat to lures
+	- deathknight and rogue additions
+	- 1.2.1 update for patch 6.2.1
+	- small adjustments to skins, chat anchoring, zone ability button styling and nameplate options
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- New lures for fishing
+	- Fixed some issues keeping CraftOMatic from swapping gear properly.
+	other minor changes...
+	- many QoL improvements
+	- archaeology mode fixed
+	- revision 1.1.08
+	- archaeology mode fixed
+	- updates
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- build update
+	- release 1.0.04
+	- updating with core
+	- toc update
+	- first commit

@@ -1,0 +1,21 @@
+## Interface: 70000
+## Author: Munglunch
+## Version: 1.0.0
+## Title: |cffFF9900SVUI Theme: |r|cff00EFFFSimple|r
+## Notes: Theme for [|cff9911FFSVUI Framework|r].
+## RequiredDeps: SVUI_!Core
+## OptionalDeps: LibSharedMedia-3.0
+## LoadOnDemand: 1
+## DefaultState: disabled
+## X-SVUITheme: Simple
+## X-Email: munglunch@gmail.com
+## X-Website: http://www.supervillainui.com
+## X-Donate: PayPal:munglunch@gmail.com
+## X-License: MIT
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: r20160725005811
+## X-Curse-Project-Name: SuperVillain UI: Theme - Simple
+## X-Curse-Project-ID: supervillain-ui-theme-simple
+## X-Curse-Repository-ID: wow/supervillain-ui-theme-simple/mainline
+
+SVUITheme_Simple.xml

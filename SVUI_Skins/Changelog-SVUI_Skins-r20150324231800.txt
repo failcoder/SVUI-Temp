@@ -1,0 +1,30 @@
+Steven Jackson:
+	- AceGUI updates
+	- revision 1.1.08
+	- garrison button skins update
+	- several failing skins fixed
+	- odd errors fixed, cooldown addons skinned better
+	- tradeskill change
+	- update to data cleaning functions
+	- several failing skins fixed
+	- lib changes
+	- fixed dockable options
+	- minor version update, revised profiles and data
+	- Battle pet list shows levels again
+	- Cleaning bad globals and optimizing code
+	- updates
+	- misc bug fixed
+	- fixes for automations, and custom profiles
+	- ace modifications, petbattle adjustments
+	- Fixed profiles, filters and lua errors
+	- updated styles in interface options
+	- api updates
+	- Styling update of quest items and garrison panels
+	- build update
+	- 6.1 style update
+	- updating with core
+	- toc update
+	- DBM fix
+	- more updates
+	- fix for file struct
+	- First Commit

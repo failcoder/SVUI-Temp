@@ -1,0 +1,16 @@
+Steven Jackson:
+	- AceGUI updates
+	- revision 1.1.08
+	- short channel adjustment
+	- chat expanding from docks fixed
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- added shortening option
+	- new features
+	- fixed twitter functionality
+	- build update
+	- updating with core
+	- toc update
+	- fix for file struct
+	- First commit

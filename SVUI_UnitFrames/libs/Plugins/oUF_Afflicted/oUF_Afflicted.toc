@@ -1,0 +1,14 @@
+## Interface: 50001
+## Title: oUF Afflicted
+## Notes: Adds Custom Debuff Highlighting to oUF.
+## Author: Munglunch
+## Version: 1.1.0
+## X-Category: oUF
+## Dependencies: oUF
+## X-Curse-Packaged-Version: r20160818004809
+## X-Curse-Project-Name: SuperVillain UI: UnitFrames
+## X-Curse-Project-ID: supervillain-ui-unitframes
+## X-Curse-Repository-ID: wow/supervillain-ui-unitframes/mainline
+
+
+oUF_ActionPanel.lua

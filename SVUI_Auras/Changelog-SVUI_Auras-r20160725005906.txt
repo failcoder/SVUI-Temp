@@ -1,0 +1,48 @@
+failcoder:
+	- This update fixes breaking changes in client patch 7.0.3
+	more updates will follow
+	- v1.2.67
+	-Adjusted skin for Storyline
+	-Fixed an issue with popup quest completion
+	-Added admirals compass to hearth button options
+	
+	v1.2.65
+	-Adding full support and skinning of Storyline to SVUI_Skins
+	-Fixed an issue with shared data regarding embeds (addon docks)
+	-Stage 1 of some needed code optimizations
+	- Screen scaling fixed. Adjusted profile options layout.
+	- Misc fixes and updates...
+Steven Jackson:
+	- toc update
+	- toc update
+	- 1.2.1 update for patch 6.2.1
+	- 1.2 release
+	-Dock buttons can be moved by [shift+click+drag] now
+	-Docks now save the last docklet you had open to reload when logging in
+	-Docks for other addons have bug fixes and have been improved in general
+	-Quest item bar has been tweaked to fix some errors and improve its layout
+	-Addons list is now styled
+	-The gold reading on the inventory frame now has a tooltip that will show totals for all server characters
+	-The frame moving tool now has an individual reset button that can be accessed when right-clicking a frame (aka the precision frame)
+	-Greatly improved nameplates and the use of threat coloring within them
+	-Revised some missing styles from various skins including PVP and LFD/LFG frames
+	-WorldStateCaptureBars updated
+	-More code cleanup.
+	- hotfixes
+	- 1.1.95 going live
+	- New textures, fixed tracking arrow for quests, fixed chat fonts in pet battles, new auto loot roll options, added styles to shaman and druid class bars....etc
+	- version update, fixed bodyguard states. Quest item buttons update to performance. Scaling changes
+	- repositioned anchors
+	- many QoL improvements
+	- Changes for new Aura Procs
+	- revision 1.1.08
+	- customClassColor and debugging fixes
+	- toc update
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- build update
+	- updating with core
+	- toc update
+	- fix for file struct
+	- First commit

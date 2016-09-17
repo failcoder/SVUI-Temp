@@ -1,0 +1,13 @@
+## Interface: 50001
+## Author: p3lim
+## Version: 50001.12-Release
+## Title: oUF Experience
+## Notes: Experience Bar support for oUF layouts.
+## RequiredDeps: oUF
+## X-Curse-Packaged-Version: r20160818004809
+## X-Curse-Project-Name: SuperVillain UI: UnitFrames
+## X-Curse-Project-ID: supervillain-ui-unitframes
+## X-Curse-Repository-ID: wow/supervillain-ui-unitframes/mainline
+
+
+oUF_Experience.lua

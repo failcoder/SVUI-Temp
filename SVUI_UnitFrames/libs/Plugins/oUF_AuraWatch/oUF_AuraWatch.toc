@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: oUF AuraWatch
+## Author: Astromech
+## Version: 1.3.38-6
+## Notes: Adds aura timers to oUF
+## OptionalDeps: oUF
+## X-oUF: oUF
+## X-Curse-Packaged-Version: r20160818004809
+## X-Curse-Project-Name: SuperVillain UI: UnitFrames
+## X-Curse-Project-ID: supervillain-ui-unitframes
+## X-Curse-Repository-ID: wow/supervillain-ui-unitframes/mainline
+
+
+oUF_AuraWatch.lua

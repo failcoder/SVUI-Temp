@@ -1,0 +1,13 @@
+Steven Jackson:
+	- archaeology mode fixed
+	- revision 1.1.08
+	- archaeology mode fixed
+	- updates
+	- minor version update, revised profiles and data
+	- Cleaning bad globals and optimizing code
+	- updates
+	- build update
+	- release 1.0.04
+	- updating with core
+	- toc update
+	- first commit
