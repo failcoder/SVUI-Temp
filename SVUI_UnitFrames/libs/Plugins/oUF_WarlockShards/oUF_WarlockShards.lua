@@ -21,43 +21,36 @@ local oUF = ns.oUF or oUF
 assert(oUF, 'oUF_WarlockShards was unable to locate oUF install')
 
 local shardColor = {
-	[1] = {0.57,0.08,1},
-	[2] = {1,0,0},
+	[1] = {0,0.72,0.1},
+	[2] = {0.57,0.08,1},
 	[3] = {1,0.25,0}
-}
-
-local shardMax = {
-	[1] = 5,
-	[2] = 4,
-	[3] = 4
 }
 
 local Update = function(self, event, unit, powerType)
 	local bar = self.WarlockShards;
 
 	if(bar.PreUpdate) then bar:PreUpdate(unit) end
-	
+
 	if UnitHasVehicleUI("player") then
 		bar:Hide()
 	else
 		bar:Show()
 	end
-	
+
 	local spec = GetSpecialization()
 
 	if spec then
-		bar.MaxCount = shardMax[spec]
-		if not bar:IsShown() then 
+		local colors = shardColor[spec]
+		local numShards = UnitPower("player", SPELL_POWER_SOUL_SHARDS);
+		bar.MaxCount = UnitPowerMax("player", SPELL_POWER_SOUL_SHARDS);
+
+		if not bar:IsShown() then
 			bar:Show()
 		end
 
 		if((not bar.CurrentSpec) or (bar.CurrentSpec ~= spec and bar.UpdateTextures)) then
 			bar:UpdateTextures(spec)
 		end
-
-		local colors = shardColor[spec]
-
-		local numShards = UnitPower("player", SPELL_POWER_SOUL_SHARDS);
 
 		for i = 1, 5 do
 			if(i > bar.MaxCount) then
@@ -92,7 +85,7 @@ end
 
 local function Enable(self, unit)
 	if(unit ~= 'player') then return end
-	
+
 	local bar = self.WarlockShards
 	if(bar) then
 		bar.__owner = self

@@ -59,7 +59,6 @@ SV.defaults[Schema] = {
 		["yOffset"] = 40,
 		["point"] = "BOTTOMLEFT",
 	},
-	["separateBags"] = false,
 	["bagSize"] = 34,
 	["bankSize"] = 34,
 	["alignToChat"] = false,
@@ -205,12 +204,6 @@ function MOD:LoadOptions()
 						guiInline = true,
 						name = L["Bag/Bank Positioning"],
 						args = {
-							separateBags = {
-								order = 0,
-								type = "toggle",
-								name = L["Separate Bag Windows"],
-								desc = L["Allows the use of multiple panels for bags, instead of just one."]
-							},
 							alignToChat = {
 								order = 1,
 								type = "toggle",

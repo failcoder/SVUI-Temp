@@ -740,11 +740,6 @@ local function MiscStyles()
 		SV.API:Set("Tab", _G["WorldStateScoreFrameTab2"])
 		SV.API:Set("Tab", _G["WorldStateScoreFrameTab3"])
 	end
-
-	if(SV.db.Skins.blizzard.talkingHead) then
-		--TalkingHeadFrame:RemoveTextures()
-		--TalkingHeadFrame:SetStyle("Frame", "Window")
-	end
 end
 --[[
 ##########################################################

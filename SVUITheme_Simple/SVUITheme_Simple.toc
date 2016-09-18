@@ -13,9 +13,5 @@
 ## X-Donate: PayPal:munglunch@gmail.com
 ## X-License: MIT
 ## X-Category: Interface Enhancements
-## X-Curse-Packaged-Version: r20160725005811
-## X-Curse-Project-Name: SuperVillain UI: Theme - Simple
-## X-Curse-Project-ID: supervillain-ui-theme-simple
-## X-Curse-Repository-ID: wow/supervillain-ui-theme-simple/mainline
 
 SVUITheme_Simple.xml

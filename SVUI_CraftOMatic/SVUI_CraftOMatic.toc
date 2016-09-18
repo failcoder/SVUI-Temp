@@ -12,9 +12,5 @@
 ## X-Donate: PayPal:munglunch@gmail.com
 ## X-License: MIT
 ## X-Category: Interface Enhancements
-## X-Curse-Packaged-Version: r20160725005946
-## X-Curse-Project-Name: SuperVillain UI: Craft-O-Matic
-## X-Curse-Project-ID: supervillain-ui-craft-o-matic
-## X-Curse-Repository-ID: wow/supervillain-ui-craft-o-matic/mainline
 
 SVUI_CraftOMatic.xml

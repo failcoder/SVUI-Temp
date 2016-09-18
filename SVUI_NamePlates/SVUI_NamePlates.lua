@@ -136,10 +136,10 @@ function MOD:PLAYER_REGEN_ENABLED()
 end
 
 function MOD:PLAYER_TARGET_CHANGED()
-	NPGlow:Hide()
-	if(NPGlow.FX:IsShown()) then
-		NPGlow.FX:Hide()
-	end
+	-- NPGlow:Hide()
+	-- if(NPGlow.FX:IsShown()) then
+	-- 	NPGlow.FX:Hide()
+	-- end
 	if(UnitExists("target")) then
 		CURRENT_TARGET_NAME = UnitName("target");
 		TARGET_CHECKS = 1;
@@ -194,12 +194,12 @@ end
 
 function MOD:Load()
 	SV:FontManager(SystemFont_NamePlate, "platename")
-	SV.SpecialFX:Register("platepoint", [[Spells\Arrow_state_animated.m2]], -12, 12, 12, -50, 0.75, 0, 0.1)
-	SV.SpecialFX:SetFXFrame(NPGlow, "platepoint", true)
-	NPGlow.FX:SetParent(SV.Screen)
-	NPGlow.FX:SetFrameStrata("BACKGROUND")
-	NPGlow.FX:SetFrameLevel(0)
-	NPGlow.FX:Hide()
+	--SV.SpecialFX:Register("platepoint", [[Spells\Arrow_state_animated.m2]], -12, 12, 12, -50, 0.75, 0, 0.1)
+	--SV.SpecialFX:SetFXFrame(NPGlow, "platepoint", true)
+	-- NPGlow.FX:SetParent(SV.Screen)
+	-- NPGlow.FX:SetFrameStrata("BACKGROUND")
+	-- NPGlow.FX:SetFrameLevel(0)
+	-- NPGlow.FX:Hide()
 	self:UpdateLocals()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -209,6 +209,6 @@ function MOD:Load()
 		ClassNameplateManaBarFrame:SetStyle("Frame", "Bar")
 		ClassNameplateManaBarFrame:SetStatusBarTexture(SV.media.statusbar.glow)
 	end
-	
+
 	self:CombatToggle(true)
 end

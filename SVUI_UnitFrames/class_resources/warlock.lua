@@ -1,7 +1,7 @@
 --[[
 ##########################################################
 S V U I   By: Munglunch
-########################################################## 
+##########################################################
 LOCALIZED LUA FUNCTIONS
 ##########################################################
 ]]--
@@ -22,8 +22,8 @@ local math 		= _G.math;
 local random, floor = math.random, math.floor;
 local CreateFrame = _G.CreateFrame;
 local GetSpecialization = _G.GetSpecialization;
---[[ 
-########################################################## 
+--[[
+##########################################################
 GET ADDON DATA
 ##########################################################
 ]]--
@@ -32,22 +32,24 @@ local L = SV.L;
 local LSM = _G.LibStub("LibSharedMedia-3.0")
 local MOD = SV.UnitFrames
 
-if(not MOD) then return end 
+if(not MOD) then return end
 
 local oUF_SVUI = MOD.oUF
 assert(oUF_SVUI, "SVUI UnitFrames: unable to locate oUF.")
-if(SV.class ~= "WARLOCK") then return end 
+if(SV.class ~= "WARLOCK") then return end
 
-SV.SpecialFX:Register("affliction", [[Spells\Warlock_bodyofflames_medium_state_shoulder_right_purple.m2]], -12, 12, 12, -12, 0.45, 0, 0.45);
---[[ 
-########################################################## 
+--SV.SpecialFX:Register("affliction", [[Spells\Fel_fire_precast_high_hand.m2]], -12, 12, 12, -12, 0.35, 0, 0);
+SV.SpecialFX:Register("demonology", [[Spells\Warlock_bodyofflames_medium_state_shoulder_right_purple.m2]], -12, 12, 12, -12, 0.4, 0, 0.45)
+SV.SpecialFX:Register("destruction", [[Spells\Fill_fire_cast_01.m2]], -12, 12, 12, -12, 1.5, -0.25, 0.5);
+--[[
+##########################################################
 LOCAL FUNCTIONS
 ##########################################################
 ]]--
 local FURY_FONT = [[Interface\AddOns\SVUI_!Core\assets\fonts\Numbers.ttf]]
 local shardColors = {
-	[1] = {{0.67,0.42,0.93,1}, {0,0,0,0.9}},
-	[2] = {{0.87,0.32,0.93,1}, {0,0,0,0.9}},
+	[1] = {{0.5,1,0,1}, {0,0,0,0.9}},
+	[2] = {{0.67,0.42,0.93,1}, {0,0,0,0.9}},
 	[3] = {{1,1,0,1}, {0,0,0,0.9}},
 	[4] = {{0.5,1,0,1}, {0,0,0,0.9}}
 }
@@ -55,27 +57,22 @@ local shardTextures = {
 	[1] = {
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD]],
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-BG]],
-		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-FG]],
-		"affliction"
+		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-FG]]
 	},
 	[2] = {
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD]],
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-BG]],
-		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-FG]],
-		"affliction"
+		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-SHARD-FG]]
 	},
 	[3] = {
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-EMBER]],
 		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-EMBER]],
-		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-EMBER-FG]], 
-		"fire"
+		[[Interface\Addons\SVUI_UnitFrames\assets\Class\WARLOCK-EMBER-FG]]
 	},
 }
-local SPEC_WARLOCK_DESTRUCTION = SPEC_WARLOCK_DESTRUCTION
-local SPEC_WARLOCK_AFFLICTION = SPEC_WARLOCK_AFFLICTION
-local SPEC_WARLOCK_DEMONOLOGY = SPEC_WARLOCK_DEMONOLOGY
---[[ 
-########################################################## 
+local specFX = {"demonology","demonology","destruction"};
+--[[
+##########################################################
 POSITIONING
 ##########################################################
 ]]--
@@ -102,29 +99,26 @@ local Reposition = function(self)
     bar:ClearAllPoints()
     bar:SetAllPoints(bar.Holder)
 
-	for i = 1, max do 
+	for i = 1, max do
 		bar[i]:ClearAllPoints()
 		bar[i]:SetHeight(size)
 		bar[i]:SetWidth(size)
-		if(i == 1) then 
+		if(i == 1) then
 			bar[i]:SetPoint("LEFT", bar)
-		else 
+		else
 			bar[i]:SetPoint("LEFT", bar[i - 1], "RIGHT", -2, 0)
-		end 
+		end
 	end
-end 
---[[ 
-########################################################## 
+end
+--[[
+##########################################################
 CUSTOM HANDLERS
 ##########################################################
 ]]--
 local UpdateTextures = function(self, spec)
 	local max = self.MaxCount;
 	local colors = shardColors[spec];
-	local textures = shardTextures[1];
-	if(spec == SPEC_WARLOCK_DESTRUCTION and IsSpellKnown(101508)) then
-		colors = shardColors[4]
-	end
+	local textures = shardTextures[spec];
 	for i = 1, max do
 		self[i]:SetStatusBarTexture(textures[1])
 		self[i]:GetStatusBarTexture():SetHorizTile(false)
@@ -132,12 +126,10 @@ local UpdateTextures = function(self, spec)
 		self[i].overlay:SetVertexColor(unpack(colors[1]))
 		self[i].bg:SetTexture(textures[2])
 		self[i].bg:SetVertexColor(unpack(colors[2]))
-		if(textures[4] ~= none) then
-			self[i].FX:SetEffect(textures[4])
-		end
+		self[i].FX:SetEffect(specFX[spec])
 	end
 	self.CurrentSpec = spec
-end 
+end
 
 local ShardUpdate = function(self, value)
 	if (value and value == 1) then
@@ -145,7 +137,7 @@ local ShardUpdate = function(self, value)
 			self.overlay:Show()
 			SV.Animate:Flash(self.overlay,1,true)
 		end
-		if(not self.FX:IsShown()) then	
+		if(not self.FX:IsShown()) then
 			self.FX:Show()
 		end
 		self.FX:UpdateEffect()
@@ -156,9 +148,9 @@ local ShardUpdate = function(self, value)
 		end
 		self.FX:Hide()
 	end
-end 
---[[ 
-########################################################## 
+end
+--[[
+##########################################################
 WARLOCK
 ##########################################################
 ]]--
@@ -172,7 +164,7 @@ function MOD:CreateClassBar(playerFrame)
 	local colors = shardColors[1];
 	local bar = CreateFrame("Frame",nil,playerFrame)
 	bar:SetFrameLevel(playerFrame.TextGrip:GetFrameLevel() + 30)
-	for i = 1, max do 
+	for i = 1, max do
 		bar[i] = CreateFrame("StatusBar", nil, bar)
 		bar[i].noupdate = true;
 		bar[i]:SetOrientation("VERTICAL")
@@ -191,10 +183,10 @@ function MOD:CreateClassBar(playerFrame)
 		bar[i].overlay:Hide()
 		bar[i].overlay:SetVertexColor(unpack(colors[1]))
 
-		SV.SpecialFX:SetFXFrame(bar[i], textures[4], true)
+		SV.SpecialFX:SetFXFrame(bar[i], specFX[1], true)
 		bar[i].Update = ShardUpdate
 	end
-	
+
 	bar.UpdateTextures = UpdateTextures;
 	bar.MaxCount = max;
 
@@ -207,5 +199,5 @@ function MOD:CreateClassBar(playerFrame)
 	playerFrame.MaxClassPower = max;
 	playerFrame.RefreshClassBar = Reposition;
 	playerFrame.WarlockShards = bar
-	return 'WarlockShards' 
+	return 'WarlockShards'
 end

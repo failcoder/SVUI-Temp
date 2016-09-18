@@ -20,7 +20,14 @@ local Schema = MOD.Schema;
 local unitframeColors = {
 	["health"]       = {0.3, 0.5, 0.3},
 	["healthBackdrop"] = {0.1, 0.1, 0.1},
-	["power"]        = { },
+	["power"]        = {
+		["MANA"]         = {0.31, 0.75, 1},
+		["RAGE"]         = {1, 0.31, 0.31},
+		["FOCUS"]        = {1, 0.63, 0.27},
+		["ENERGY"]       = {0.85, 0.83, 0.25},
+		["RUNES"]        = {0.55, 0.57, 0.61},
+		["RUNIC_POWER"]  = {0, 0.82, 1}
+	},
 	["reaction"]     = {
 		[1] = {0.92, 0.15, 0.15},
 		[2] = {0.92, 0.15, 0.15},

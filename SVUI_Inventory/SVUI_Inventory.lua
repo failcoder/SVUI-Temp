@@ -58,6 +58,7 @@ local DEBUG_BAGS = false;
 local CreateFrame = _G.CreateFrame;
 local hooksecurefunc = _G.hooksecurefunc;
 local numBagFrame = NUM_BAG_FRAMES + 1;
+local MULTI_BAG_LAYOUT = false;
 local MULTI_BAG_HEIGHT_OFFSET = 0;
 local LOOT_CACHE, GEAR_CACHE, GEARSET_LISTING = {}, {}, {};
 local internalTimer;
@@ -316,7 +317,7 @@ local ContainerFrame_UpdateLayout = function(self)
 	local containerWidth, numContainerColumns, buttonSize
 	local precount = 0;
 	for i, bagID in ipairs(self.BagIDs) do
-		if((not SV.db.Inventory.separateBags) or (isBank or (bagID > 0))) then
+		if((not MULTI_BAG_LAYOUT) or (isBank or (bagID > 0))) then
 			local numSlots = GetContainerNumSlots(bagID);
 			precount = precount + (numSlots or 0);
 		end
@@ -353,7 +354,7 @@ local ContainerFrame_UpdateLayout = function(self)
 	local numContainerSlots, fullContainerSlots = GetNumBankSlots();
 	local totalSlots = 0;
 
-	if(SV.db.Inventory.separateBags) then
+	if(MULTI_BAG_LAYOUT) then
 		local bpCount = GetContainerNumSlots(0);
 		local bpRows = ceil(bpCount / numContainerColumns);
 		containerHeight = (((buttonSize + buttonSpacing) * bpRows) - buttonSpacing) + self.topOffset + self.bottomOffset;
@@ -765,7 +766,7 @@ function MOD:ModifyBags()
 
 	MULTI_BAG_HEIGHT_OFFSET = 0;
 
-	if(SV.db.Inventory.separateBags) then
+	if(MULTI_BAG_LAYOUT) then
 		for bagID,bag in pairs(self.MasterFrame.Bags) do
 			if(bagID == 1 or bagID == 3) then
 				local bagHeight = bag:GetHeight()
@@ -1098,7 +1099,7 @@ do
 	local Container_OnShow = function(self)
 		NEXT_ACTION_ALLOWED = true
 		MOD:PositionBagBar()
-		if(SV.db.Inventory.separateBags) then
+		if(MULTI_BAG_LAYOUT) then
 			for bagID, bagFrame in ipairs(MOD.MasterFrame.Bags) do
 				bagFrame:Show()
 			end
@@ -1295,7 +1296,7 @@ do
 			frame.currencyButton[h]:Hide()
 		end
 
-		if(SV.db.Inventory.separateBags) then
+		if(MULTI_BAG_LAYOUT) then
 			for i, bagID in ipairs(frame.BagIDs) do
 				if(bagID > 0) then
 					local singleBagFrameName = "SVUI_ContainerFrameBag" .. bagID;

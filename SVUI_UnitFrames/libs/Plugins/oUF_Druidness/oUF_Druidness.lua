@@ -54,28 +54,6 @@ local ProxyShow = function(self)
 	self:Show()
 end
 
-local UpdateAura = function(self, event, unit)
-	if(unit and unit ~= "player") then return end
-	local chicken = self.Druidness.Chicken
-	if(not chicken) then return end
-	chicken.inEclipse = false
-	for i = 1, 40, 1 do
-		local name, _, _, _, _, _, _, _, _, _, spellID = UnitAura("player", i, "HELPFUL|PLAYER")
-		if not name then break end
-		if spellID == ECLIPSE_BAR_SOLAR_BUFF_ID then
-			chicken.inEclipse = true
-			break
-		elseif spellID == ECLIPSE_BAR_LUNAR_BUFF_ID then
-			chicken.inEclipse = true
-			break
-		end
-	end
-
-	if(chicken.PostUpdateAura) then
-		return chicken:PostUpdateAura()
-	end
-end
-
 local function CatOverMana(mana, form)
 	if mana.ManaBar:GetValue() < UnitPowerMax('player', SPELL_POWER_MANA) then
 		mana:ProxyShow()
@@ -199,7 +177,6 @@ end
 
 local Update = function(self, ...)
 	UpdatePower(self, ...)
-	UpdateAura(self, ...)
 	UpdateComboPoints(self, ...)
 	return UpdateVisibility(self, ...)
 end

@@ -1,6 +1,6 @@
 ## Interface: 70000
 ## Author: Munglunch
-## Version: 1.3.3
+## Version: 1.3.2
 ## Title: |cffFF9900SuperVillain UI: |r|cffFFEF00Inventory|r
 ## Notes: Inventory Plugin for [|cff9911FFSVUI|r].
 ## SavedVariables: SVUI_LootCache
@@ -14,9 +14,5 @@
 ## X-Donate: PayPal:munglunch@gmail.com
 ## X-License: MIT
 ## X-Category: Interface Enhancements
-## X-Curse-Packaged-Version: r20160818004752
-## X-Curse-Project-Name: SuperVillain UI: Inventory
-## X-Curse-Project-ID: supervillain-ui-inventory
-## X-Curse-Repository-ID: wow/supervillain-ui-inventory/mainline
 
 SVUI_Inventory.xml

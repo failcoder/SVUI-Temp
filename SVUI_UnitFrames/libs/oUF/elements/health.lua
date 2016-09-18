@@ -32,7 +32,7 @@ local parent, ns = ...
 local oUF = ns.oUF
 
 oUF.colors.health = {49/255, 207/255, 37/255}
-local UpdateFrequentUpdates
+--local UpdateFrequentUpdates
 
 local Update = function(self, event, unit)
 	if(self.unit ~= unit) or not unit then return end
@@ -101,9 +101,9 @@ local Update = function(self, event, unit)
 		end
 	end
 
-	if health.frequentUpdates ~= health.__frequentUpdates then
-		UpdateFrequentUpdates(self)
-	end
+	-- if health.frequentUpdates ~= health.__frequentUpdates then
+	-- 	UpdateFrequentUpdates(self)
+	-- end
 
 	if self.ResurrectIcon then
 		self.ResurrectIcon:SetAlpha(min == 0 and 1 or 0)
@@ -132,27 +132,27 @@ local ForceUpdate = function(element)
 	return Update(element.__owner, 'ForceUpdate', element.__owner.unit)
 end
 
-function UpdateFrequentUpdates(self)
-	local health = self.Health
-	health.__frequentUpdates = health.frequentUpdates
-	if health.frequentUpdates and not self:IsEventRegistered("UNIT_HEALTH_FREQUENT") then
-		if GetCVarBool("predictedHealth") ~= 1 then
-			SetCVar("predictedHealth", 1)
-		end
-
-		self:RegisterEvent('UNIT_HEALTH_FREQUENT', Update)
-
-		if self:IsEventRegistered("UNIT_HEALTH") then
-			self:UnregisterEvent("UNIT_HEALTH", Update)
-		end
-	elseif not self:IsEventRegistered("UNIT_HEALTH") then
-		self:RegisterEvent('UNIT_HEALTH', Update)
-
-		if self:IsEventRegistered("UNIT_HEALTH_FREQUENT") then
-			self:UnregisterEvent("UNIT_HEALTH_FREQUENT", Update)
-		end
-	end
-end
+-- function UpdateFrequentUpdates(self)
+-- 	local health = self.Health
+-- 	health.__frequentUpdates = health.frequentUpdates
+-- 	if health.frequentUpdates and not self:IsEventRegistered("UNIT_HEALTH_FREQUENT") then
+-- 		if GetCVarBool("predictedHealth") ~= 1 then
+-- 			SetCVar("predictedHealth", 1)
+-- 		end
+--
+-- 		self:RegisterEvent('UNIT_HEALTH_FREQUENT', Update)
+--
+-- 		if self:IsEventRegistered("UNIT_HEALTH") then
+-- 			self:UnregisterEvent("UNIT_HEALTH", Update)
+-- 		end
+-- 	elseif not self:IsEventRegistered("UNIT_HEALTH") then
+-- 		self:RegisterEvent('UNIT_HEALTH', Update)
+--
+-- 		if self:IsEventRegistered("UNIT_HEALTH_FREQUENT") then
+-- 			self:UnregisterEvent("UNIT_HEALTH_FREQUENT", Update)
+-- 		end
+-- 	end
+-- end
 
 local Enable = function(self, unit)
 	local health = self.Health
@@ -161,17 +161,12 @@ local Enable = function(self, unit)
 		health.ForceUpdate = ForceUpdate
 		health.__frequentUpdates = health.frequentUpdates
 
-		if(health.frequentUpdates) then
-			self:RegisterEvent('UNIT_HEALTH_FREQUENT', Update)
-		else
-			self:RegisterEvent('UNIT_HEALTH', Update)
-		end
-
+		self:RegisterEvent('UNIT_HEALTH', Update)
 		self:RegisterEvent("UNIT_MAXHEALTH", Update)
 		self:RegisterEvent('UNIT_CONNECTION', Update)
-
-		-- For tapping.
 		self:RegisterEvent('UNIT_FACTION', Update)
+		self:RegisterUnitEvent("UNIT_HEALTH", unit);
+		self:RegisterUnitEvent("UNIT_MAXHEALTH", unit);
 
 		if(health:IsObjectType'StatusBar' and not health:GetStatusBarTexture()) then
 			health:SetStatusBarTexture[[Interface\TargetingFrame\UI-StatusBar]]

@@ -1,9 +1,5 @@
 ## Interface: 70000
 ## LoadOnDemand: 1
-## X-Curse-Packaged-Version: r20160818004736
-## X-Curse-Project-Name: SuperVillain UI: Core
-## X-Curse-Project-ID: supervillain-ui
-## X-Curse-Repository-ID: wow/supervillain-ui/mainline
 
 ## Title: Lib: AceVillain-1.0
 ## Notes: Provides shared widgets for use by the AceGUI lib.

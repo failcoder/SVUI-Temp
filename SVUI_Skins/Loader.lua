@@ -116,7 +116,6 @@ SV.defaults[Schema] = {
 		["petbattleui"] = true,
 		["losscontrol"] = true,
 		["itemUpgrade"] = true,
-		["talkingHead"] = true,
 	},
 	["addons"] = {
 		["enable"] = true,

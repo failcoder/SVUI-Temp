@@ -226,8 +226,8 @@ do
 				local frame = select(i, btn:GetRegions())
 				if frame:GetObjectType() == "Texture" then
 					local iconFile = frame:GetTexture()
-					-- JV: The type check is a hack until I figure out what's going wrong to make LibDBIcon sometimes return a number for the texture 
-					if((iconFile ~= nil and type(iconFile) == "string")) and (iconFile:find("Border") or iconFile:find("Background") or iconFile:find("AlphaMask"))) then
+					--JV: Check type in case iconFile is a number - reported error involving LiDBIcon - need to find root cause
+					if((iconFile ~= nil and type(iconFile) == "string") and (iconFile:find("Border") or iconFile:find("Background") or iconFile:find("AlphaMask"))) then
 						frame:SetTexture("")
 					else
 						frame:ClearAllPoints()
@@ -785,10 +785,10 @@ end
 
 local _hook_BlipTextures = function(self, texture)
 	if(SV.db.Maps.customIcons and (texture ~= MOD.media.customBlips)) then
-		--self:SetBlipTexture(MOD.media.customBlips)
+		self:SetBlipTexture(MOD.media.customBlips)
 	else
 		if((not SV.db.Maps.customIcons) and texture ~= MOD.media.defaultBlips) then
-			--self:SetBlipTexture(MOD.media.defaultBlips)
+			self:SetBlipTexture(MOD.media.defaultBlips)
 		end
 	end
 end
@@ -815,7 +815,7 @@ function MOD:Load()
 	Minimap:SetParent(self.Holder)
 	Minimap:SetFrameStrata("LOW")
 	Minimap:SetFrameLevel(Minimap:GetFrameLevel() + 2)
-	
+
 	self.Holder:SetFrameLevel(Minimap:GetFrameLevel() - 2)
 	self.Holder:SetFrameStrata("LOW")
 	self.Holder:SetPoint("TOPRIGHT", SV.Screen, "TOPRIGHT", -15, -20)
@@ -887,8 +887,8 @@ function MOD:Load()
 	self.InfoTop:SetPoint("TOPLEFT", self.Holder, "TOPLEFT", 4, -4)
 	--self.InfoTop:SetSize(100, 22)
 	self.InfoTop:SetStyle("Frame")
-  	self.InfoTop:SetPanelColor("yellow")
-  	self.InfoTop:SetBackdropColor(1, 1, 0, 1)
+  self.InfoTop:SetPanelColor("yellow")
+  self.InfoTop:SetBackdropColor(1, 1, 0, 1)
 	self.InfoTop:SetFrameLevel(Minimap:GetFrameLevel() + 2)
 
 	self.InfoTop.Text:SetShadowColor(0, 0, 0, 0.3)

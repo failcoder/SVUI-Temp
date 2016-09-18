@@ -6,9 +6,5 @@
 ## X-Website: http://www.wowace.com/projects/callbackhandler/
 ## X-Category: Library
 ## X-License: BSD-2.0
-## X-Curse-Packaged-Version: r20160818004736
-## X-Curse-Project-Name: SuperVillain UI: Core
-## X-Curse-Project-ID: supervillain-ui
-## X-Curse-Repository-ID: wow/supervillain-ui/mainline
 
 CallbackHandler-1.0.lua

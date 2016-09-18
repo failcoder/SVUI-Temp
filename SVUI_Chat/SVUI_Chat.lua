@@ -1144,7 +1144,7 @@ local function OpenNewSVUIChatFrame(newname)
 			ChatFrame_RemoveAllMessageGroups(chatFrame);
 			ChatFrame_RemoveAllChannels(chatFrame);
 			ChatFrame_ReceiveAllPrivateMessages(chatFrame);
-			ChatFrame_ReceiveAllBNConversations(chatFrame);
+			--ChatFrame_ReceiveAllBNConversations(chatFrame);
 
 			ChatFrame_AddMessageGroup(chatFrame, "SAY");
 			ChatFrame_AddMessageGroup(chatFrame, "YELL");

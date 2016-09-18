@@ -1,6 +1,6 @@
 ## Interface: 70000
 ## Author: Munglunch
-## Version: 1.3.3
+## Version: 1.3.2
 ## Title: |cffFF9900SuperVillain UI: |r|cff00FF00!Options|r
 ## Notes: SVUI [|cff9911FFConfig Options|r]
 ## RequiredDeps: SVUI_!Core
@@ -11,9 +11,5 @@
 ## X-License: MIT
 ## X-Category: Interface Enhancements
 ## X-MKName: Options
-## X-Curse-Packaged-Version: r20160818004736
-## X-Curse-Project-Name: SuperVillain UI: Core
-## X-Curse-Project-ID: supervillain-ui
-## X-Curse-Repository-ID: wow/supervillain-ui/mainline
 
 SVUI_!Options.xml

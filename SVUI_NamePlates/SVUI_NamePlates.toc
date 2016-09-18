@@ -12,9 +12,5 @@
 ## X-Donate: PayPal:munglunch@gmail.com
 ## X-License: MIT
 ## X-Category: Interface Enhancements
-## X-Curse-Packaged-Version: r20160727204240
-## X-Curse-Project-Name: SuperVillain UI: NamePlates
-## X-Curse-Project-ID: supervillain-ui-nameplates
-## X-Curse-Repository-ID: wow/supervillain-ui-nameplates/mainline
 
 SVUI_NamePlates.xml

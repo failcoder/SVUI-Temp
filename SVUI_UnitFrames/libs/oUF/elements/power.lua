@@ -1,13 +1,13 @@
 local parent, ns = ...
 local oUF = ns.oUF
 
-local updateFrequentUpdates
 oUF.colors.power = {}
 for power, color in next, PowerBarColor do
 	if(type(power) == 'string') then
 		oUF.colors.power[power] = {color.r, color.g, color.b}
 	end
 end
+
 local GetDisplayPower = function(power, unit)
 	if not unit then return; end
 	local _, _, _, _, _, _, showOnRaid = UnitAlternatePowerInfo(unit)
@@ -24,14 +24,14 @@ local Update = function(self, event, unit)
 
 	if(power.PreUpdate) then power:PreUpdate(unit) end
 
-	local displayType = GetDisplayPower(power, unit)
-	local min, max = UnitPower(unit, displayType), UnitPowerMax(unit, displayType)
+	local displayType = GetDisplayPower(power, unit);
+	local min = UnitPower(unit, displayType);
+	local max = UnitPowerMax(unit, displayType);
 	local disconnected = not UnitIsConnected(unit)
 	if max == 0 then
 		max = 1
 	end
 	power:SetMinMaxValues(0, max)
-
 	if(disconnected) then
 		power:SetValue(max)
 	else
@@ -41,7 +41,6 @@ local Update = function(self, event, unit)
 	power.disconnected = disconnected
 	if power.frequentUpdates ~= power.__frequentUpdates then
 		power.__frequentUpdates = power.frequentUpdates
-		updateFrequentUpdates(self)
 	end
 
 	local r, g, b, t
@@ -93,23 +92,6 @@ local ForceUpdate = function(element)
 	return Path(element.__owner, 'ForceUpdate', element.__owner.unit)
 end
 
-function updateFrequentUpdates(self)
-	local power = self.Power
-	if power.frequentUpdates and not self:IsEventRegistered('UNIT_POWER_FREQUENT') then
-		self:RegisterEvent('UNIT_POWER_FREQUENT', Path)
-
-		if self:IsEventRegistered('UNIT_POWER') then
-			self:UnregisterEvent('UNIT_POWER', Path)
-		end
-	elseif not self:IsEventRegistered('UNIT_POWER') then
-		self:RegisterEvent('UNIT_POWER', Path)
-
-		if self:IsEventRegistered('UNIT_POWER_FREQUENT') then
-			self:UnregisterEvent('UNIT_POWER_FREQUENT', Path)
-		end		
-	end
-end
-
 local Enable = function(self, unit)
 	local power = self.Power
 	if(power) then
@@ -117,16 +99,17 @@ local Enable = function(self, unit)
 		power.ForceUpdate = ForceUpdate
 
 		power.__frequentUpdates = power.frequentUpdates
-		updateFrequentUpdates(self)
 
 		self:RegisterEvent('UNIT_POWER_BAR_SHOW', Path)
 		self:RegisterEvent('UNIT_POWER_BAR_HIDE', Path)
 		self:RegisterEvent('UNIT_DISPLAYPOWER', Path)
 		self:RegisterEvent('UNIT_CONNECTION', Path)
-		self:RegisterEvent('UNIT_MAXPOWER', Path)
-
-		-- For tapping.
 		self:RegisterEvent('UNIT_FACTION', Path)
+		self:RegisterEvent('UNIT_MAXPOWER', Path)
+		self:RegisterEvent('UNIT_POWER', Path)
+		self:RegisterUnitEvent("UNIT_POWER", unit);
+		self:RegisterUnitEvent("UNIT_MAXPOWER", unit);
+
 
 		if(power:IsObjectType'StatusBar' and not power:GetStatusBarTexture()) then
 			power:SetStatusBarTexture[[Interface\TargetingFrame\UI-StatusBar]]

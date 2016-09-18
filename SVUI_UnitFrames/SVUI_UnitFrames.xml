@@ -135,6 +135,7 @@
     <Script file="class_resources\warlock.lua"/>
     <Script file="class_resources\warrior.lua"/>
 
+
     <Script file="frames.lua"/>
     <Script file="groups.lua"/>
     <Script file="view.lua"/>
