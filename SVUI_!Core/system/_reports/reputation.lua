@@ -76,7 +76,9 @@ local function CacheRepData(data)
 				count=count+1;
 			end
 		else
-			data[count] = nil;
+			-- JV - 20160818: This doesn't work! Setting data[count] to nil breaks the sort_menu_fn...
+			-- data[count] = nil;
+			data[count] = {text="",func=nil};
 			count=count+1;
 		end
 	end
