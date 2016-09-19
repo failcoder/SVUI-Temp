@@ -78,8 +78,8 @@ local function CacheRepData(data)
 		else
 			-- JV - 20160818: This doesn't work! Setting data[count] to nil breaks the sort_menu_fn...
 			-- data[count] = nil;
-			data[count] = {text="",func=nil};
-			count=count+1;
+			tremove(data, count);
+			count=count
 		end
 	end
 	tsort(data, sort_menu_fn)
