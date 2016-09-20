@@ -56,10 +56,11 @@ end
 
 local sort_menu_fn = function(a,b) 
 	if (a ~= nil and b ~= nil) then 
-		return a.text < b.text 
-	else 
-		return false 
-	end 
+		if (a.text ~= nil and b.text ~= nil) then
+			return a.text < b.text
+		end
+	end
+	return false 
 end;
 
 local function CacheRepData(data)
@@ -72,8 +73,9 @@ local function CacheRepData(data)
 
 	for i=1, maxCount do
 		if(i <= totalFactions) then
-			local factionName, description, standingID, barMin, barMax, barValue, _, _, _, _, hasRep, isWatched, isChild = GetFactionInfo(i)
-			if(not isHeader and standingID) then
+			local factionName, description, standingID, barMin, barMax, barValue, _, _, isHeader, _, hasRep, isWatched, isChild = GetFactionInfo(i)
+
+			if((not isHeader) and standingID > 0) then
 				if not IsFactionInactive(i) then
 					local fn = function()
 						local active = GetWatchedFactionInfo()
@@ -82,6 +84,7 @@ local function CacheRepData(data)
 						end
 					end
 					data[count] = {text = factionName, func = fn};
+					--DEFAULT_CHAT_FRAME:AddMessage("Faction: " .. data[count].text .. " - " .. count)
 					count=count+1;
 				end
 			end
@@ -89,8 +92,9 @@ local function CacheRepData(data)
 			tremove(data, count);
 		end
 	end
-	tsort(data, sort_menu_fn);
-
+	if #data > 0 then
+		tsort(data, sort_menu_fn);
+	end
 end
 --[[
 ##########################################################
