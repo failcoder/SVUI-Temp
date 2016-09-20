@@ -54,35 +54,43 @@ local function TruncateString(value)
     end
 end
 
-local sort_menu_fn = function(a,b) return a.text < b.text end;
+local sort_menu_fn = function(a,b) 
+	if (a ~= nil and b ~= nil) then 
+		return a.text < b.text 
+	else 
+		return false 
+	end 
+end;
 
 local function CacheRepData(data)
 	local count = 1;
 	local savedCount = #data;
+	ExpandAllFactionHeaders();
 	local totalFactions = GetNumFactions();
 	local maxCount = totalFactions;
 	if(savedCount > totalFactions) then maxCount = savedCount; end
+
 	for i=1, maxCount do
 		if(i <= totalFactions) then
 			local factionName, description, standingID, barMin, barMax, barValue, _, _, _, _, hasRep, isWatched, isChild = GetFactionInfo(i)
-			if(standingID) then
-				local fn = function()
-					local active = GetWatchedFactionInfo()
-					if factionName ~= active then
-						SetWatchedFactionIndex(i)
+			if(not isHeader and standingID) then
+				if not IsFactionInactive(i) then
+					local fn = function()
+						local active = GetWatchedFactionInfo()
+						if factionName ~= active then
+							SetWatchedFactionIndex(i)
+						end
 					end
+					data[count] = {text = factionName, func = fn};
+					count=count+1;
 				end
-				data[count] = {text = factionName, func = fn};
-				count=count+1;
 			end
 		else
-			-- JV - 20160818: This doesn't work! Setting data[count] to nil breaks the sort_menu_fn...
-			-- data[count] = nil;
 			tremove(data, count);
-			count=count
 		end
 	end
-	tsort(data, sort_menu_fn)
+	tsort(data, sort_menu_fn);
+
 end
 --[[
 ##########################################################
