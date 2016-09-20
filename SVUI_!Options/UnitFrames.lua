@@ -2495,16 +2495,17 @@ SV.Options.args[Schema] = {
 									desc = L["Use handy graphics to focus the current target, or clear the current focus"],
 									type = "toggle"
 								},
-								resolveBar = {
-									order = 6,
-									name = L["Resolve Meter"],
-									desc = L["A convenient meter for tanks to display their current resolve."],
-									type = "toggle",
-									set = function(key, value)
-										MOD:ChangeDBVar(value, "resolveBar");
-										SV:StaticPopup_Show("RL_CLIENT")
-									end
-								},
+								-- JV - 20160919 : Resolve mechanic is now gone as of Legion.
+								-- resolveBar = {
+								-- 	order = 6,
+								-- 	name = L["Resolve Meter"],
+								-- 	desc = L["A convenient meter for tanks to display their current resolve."],
+								-- 	type = "toggle",
+								-- 	set = function(key, value)
+								-- 		MOD:ChangeDBVar(value, "resolveBar");
+								-- 		SV:StaticPopup_Show("RL_CLIENT")
+								-- 	end
+								-- },
 								infoBackgrounds = {
 									order = 7,
 									name = L["Info Backgrounds"],

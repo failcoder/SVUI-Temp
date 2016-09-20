@@ -2103,7 +2103,7 @@ function MOD:Load()
 		dock.Alert:ClearAllPoints()
 		dock.Alert:SetSize(width, 1)
 		dock.Alert:SetPoint(anchor, dock, anchor, 0, 0)
-		dock.Alert:SetParent(UIParent)
+		--dock.Alert:SetParent(UIParent)
 
 		dock.Window:ClearAllPoints()
 		dock.Window:SetSize(width, height)
@@ -2114,7 +2114,7 @@ function MOD:Load()
 		SV:NewAnchor(dock, location .. " Dock Window");
 		SV:SetAnchorResizing(dock, dockPostSizeFunc, 10, 500);
 
-		dock.Alert:SetParent(UIParent)
+		--dock.Alert:SetParent(UIParent)
 	end
 
 	if MOD.private.LeftFaded then MOD.BottomLeft:Hide() end
