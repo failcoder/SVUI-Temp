@@ -64,6 +64,7 @@ local UIPanels = {};
 UIPanels["AchievementFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["AuctionFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["ArchaeologyFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
+UIPanels["ArtifactFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["BattlefieldMinimap"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = true };
 UIPanels["BarberShopFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["BlackMarketFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
@@ -95,6 +96,7 @@ UIPanels["MacroFrame"] 						= { moving = false, snapped = false, canupdate = fa
 UIPanels["MailFrame"] 						= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["MerchantFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["ObjectiveTrackerFrame"] 			= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
+UIPanels["OrderHallMissionFrame"] 			= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["PlayerTalentFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["PetJournalParent"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["PetStableFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
