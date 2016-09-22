@@ -6,4 +6,5 @@
 	<Include file="AceGUI-3.0\AceGUI-3.0.xml"/>
 	<Include file="AceConfig-3.0\AceConfig-3.0.xml"/>
 	<Include file="AceVillain-1.0\AceVillain-1.0.xml"/>
+	<Script file="LibArtifactData-1.0\LibArtifactData-1.0.lua"/>	
 </Ui>
