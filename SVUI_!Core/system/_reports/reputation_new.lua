@@ -130,13 +130,11 @@ Report.OnInit = function(self)
 		end
 		CacheRepData(self.InnerData)
 		Report.Populate(self)
-		if Reports.Tooltip.IsShown() then
-			DoTooltip(self)
-		end
 	end)
 	LRD.RegisterCallback(self, "REPUTATION_CHANGED", function() 
 		Report.Populate(self)
 	end)
+	LRD:ForceUpdate()
 end
 --[[
 ##########################################################
@@ -195,4 +193,5 @@ ReportBar.OnInit = function(self)
 	LRD.RegisterCallback(self, "REPUTATION_CHANGED", function() 
 		ReportBar.Populate(self)
 	end)
+	LRD:ForceUpdate()
 end
