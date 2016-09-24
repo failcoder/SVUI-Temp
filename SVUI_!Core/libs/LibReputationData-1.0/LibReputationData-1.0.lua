@@ -6,9 +6,7 @@ if not lib then return end
 
 lib.callbacks = lib.callbacks or _G.LibStub("CallbackHandler-1.0"):New(lib)
 
-LibStub("AceTimer-3.0"):Embed(lib)
 -- local store
-local timer
 local reputationChanges = {}
 local allFactions = {}
 local watchedFaction = 0
@@ -18,6 +16,7 @@ local GetFactionInfo                = _G.GetFactionInfo
 local GetFriendshipReputation		= _G.GetFriendshipReputation
 local IsFactionInactive 			= _G.IsFactionInactive
 local SetWatchedFactionIndex        = _G.SetWatchedFactionIndex
+local TimerAfter					= _G.C_Timer.After
 
 -- lua api
 local select   = _G.select
@@ -45,23 +44,19 @@ local function CopyTable(tbl)
 	return copy;
 end
 
-
-local function GetFactionIndex(factionName)
-	for i = 1, #allFactions do
-		local name, _, _, _, _, _, _, _, _, _, _, _, _ = GetLocalFactionInfo(i); --added 2 or 3 _, to the end
-		if name == factionName then return i end
-	end
-end
-
 local function GetFLocalFactionInfo(factionIndex)
 	return allFactions[factionIndex]
 end
 
+local function GetFactionIndex(factionName)
+	for i = 1, #allFactions do
+		local name, _, _, _, _, _, _, _, _, _, _, _, _ = GetFLocalFactionInfo(i);
+		if name == factionName then return i end
+	end
+end
 
 local function GetFactionData(factionIndex)
-	-- name, description, standingId, bottomValue, topValue, earnedValue, atWarWith,
-	--  canToggleAtWar, isHeader, isCollapsed, hasRep, isWatched, isChild, factionID,
-	--  hasBonusRepGain, canBeLFGBonus = GetFactionInfo(factionIndex)
+
 	local name, _, standingID, bottomValue, topValue, earnedValue, _,
 		_, isHeader, isCollapsed, hasRep, isWatched, isChild, factionID = GetFactionInfo(factionIndex)
 	if not name then return nil end
@@ -102,13 +97,10 @@ local function RefreshAllFactions()
 	local i = 1
 	local lastName
 	local factions = {}
-	--ExpandAllFactionHeaders()
+
 	repeat
-		-- name, description, standingId, bottomValue, topValue, earnedValue, atWarWith,
-		--  canToggleAtWar, isHeader, isCollapsed, hasRep, isWatched, isChild, factionID,
-		--  hasBonusRepGain, canBeLFGBonus = GetFactionInfo(factionIndex)
-		local name, _, standingId, bottomValue, topValue, earnedValue, _,
-			_, isHeader, isCollapsed, hasRep, isWatched, isChild, factionID = GetFactionInfo(i)
+		local name, description, standingId, bottomValue, topValue, earnedValue, atWarWith,
+			canToggleAtWar, isHeader, isCollapsed, hasRep, isWatched, isChild, factionID = GetFactionInfo(i)
 		if not name or name == lastName and name ~= GUILD then break end
 
 		lastName = name
@@ -138,7 +130,7 @@ local function EnsureFactionsLoaded()
 	-- to load when the game boots up so we need to periodically
 	-- check whether its loaded before we can display it
 	if GetFactionInfo(1) == nil or (IsInGuild() and GetGuildInfo("player") == nil) then
-		lib:ScheduleTimer("EnsureFactionsLoaded", 0.5)	
+			TimerAfter(0.5, EnsureFactionsLoaded)
 	else
 		-- Refresh all factions and notify subscribers
 		RefreshAllFactions() 
@@ -149,13 +141,14 @@ end
 -- Update reputation
 ------------------------------------------------------------------------------
 local function UpdateReputationChanges()
-	lib:RefreshAllFactions()
+
+	RefreshAllFactions()
 
 	-- Build sorted change table
 	local changes = {}
 	for name, amount in pairs(reputationChanges) do
 
-		local factionIndex= lib:GetFactionIndex(name)
+		local factionIndex= GetFactionIndex(name)
 		if factionIndex then
 			UpdateFaction(factionIndex)
 			tinsert(changes, {
@@ -175,7 +168,6 @@ local function UpdateReputationChanges()
 		InformReputationsChanged(changes)
 	end
 	
-	timer = nil
 	reputationChanges = {}
 end
 
@@ -190,10 +182,10 @@ end
 -- Events
 ------------------------------------------------------------------------------
 function private.PLAYER_ENTERING_WORLD(event)
-	_G.C_Timer.After(5, function()
-		EnsureFactionsLoaded()
+	TimerAfter(3, function()
 		frame:RegisterEvent("COMBAT_TEXT_UPDATE")
 		frame:RegisterEvent("UPDATE_FACTION")
+		EnsureFactionsLoaded()
 	end)
 end
 
@@ -213,10 +205,7 @@ function private.COMBAT_TEXT_UPDATE(event, type, name, amount)
 			reputationChanges[name] = reputationChanges[name] + amount
 		end
 
-		if timer then
-			lib:CancelTimer(timer, true)
-		end
-		timer = lib:ScheduleTimer("UpdateReputationChanges", 0.1)
+		TimerAfter(0.5,UpdateReputationChanges)
 
 	end
 end
