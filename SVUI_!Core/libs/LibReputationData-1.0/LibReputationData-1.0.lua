@@ -6,6 +6,7 @@ if not lib then return end
 
 lib.callbacks = lib.callbacks or _G.LibStub("CallbackHandler-1.0"):New(lib)
 
+LibStub("AceTimer-3.0"):Embed(lib)
 -- local store
 local timer
 local reputationChanges = {}
@@ -137,10 +138,10 @@ local function EnsureFactionsLoaded()
 	-- to load when the game boots up so we need to periodically
 	-- check whether its loaded before we can display it
 	if GetFactionInfo(1) == nil or (IsInGuild() and GetGuildInfo("player") == nil) then
-		self:ScheduleTimer("EnsureFactionsLoaded", 0.5)	
+		lib:ScheduleTimer("EnsureFactionsLoaded", 0.5)	
 	else
 		-- Refresh all factions and notify subscribers
-		RefreshAllFactions()
+		RefreshAllFactions() 
 	end
 end
 
@@ -148,13 +149,13 @@ end
 -- Update reputation
 ------------------------------------------------------------------------------
 local function UpdateReputationChanges()
-	self:RefreshAllFactions()
+	lib:RefreshAllFactions()
 
 	-- Build sorted change table
 	local changes = {}
 	for name, amount in pairs(reputationChanges) do
 
-		local factionIndex= self:GetFactionIndex(name)
+		local factionIndex= lib:GetFactionIndex(name)
 		if factionIndex then
 			UpdateFaction(factionIndex)
 			tinsert(changes, {
@@ -213,9 +214,9 @@ function private.COMBAT_TEXT_UPDATE(event, type, name, amount)
 		end
 
 		if timer then
-			self:CancelTimer(timer, true)
+			lib:CancelTimer(timer, true)
 		end
-		timer = self:ScheduleTimer("UpdateReputationChanges", 0.1)
+		timer = lib:ScheduleTimer("UpdateReputationChanges", 0.1)
 
 	end
 end
@@ -271,5 +272,5 @@ function lib:GetNumObtainedReputations()
 end
 
 function lib:ForceUpdate()
-	RefreshAllFactions()
+	EnsureFactionsLoaded()
 end
