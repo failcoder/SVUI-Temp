@@ -648,6 +648,19 @@ function SVUIOptions:SetHealthConfigGroup(partyRaid, updateFunction, unitName, c
 						func = function() ACD:SelectGroup(SV.NameID, "UnitFrames", "commonGroup", "baseGroup", "allColorsGroup", "healthGroup") end
 					},
 				}
+			},
+			extra = {
+				order = 4,
+				type = "group",
+				guiInline = true,
+				name = "Extras",
+				args = {
+					absorbsBar = {
+						type = "toggle",
+						name = "Absorbs Bar",
+						desc = "Show an absorb bar anchored to health bar. \n It allows to see the current health effective (current health + current absorbs).",
+					}
+				}
 			}
 		}
 	}
