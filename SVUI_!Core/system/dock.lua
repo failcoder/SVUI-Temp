@@ -1498,8 +1498,14 @@ DOCKS
 MOD.TopCenter = _G["SVUI_DockTopCenter"];
 MOD.BottomCenter = _G["SVUI_DockBottomCenter"];
 
+local dockAlertCombatActive = false
+
 local DockAlert_OnEvent = function(self, event)
     if(event == 'PLAYER_REGEN_ENABLED') then
+    	if dockAlertCombatActive then
+    		DockAlert_Deactivate(self)
+    		dockAlertCombatActive = false
+    	end
         self:SetHeight(self.activeHeight)
         self:UnregisterEvent(event)
     end
@@ -1515,6 +1521,11 @@ local DockAlert_Activate = function(self, child, newHeight)
 end
 
 local DockAlert_Deactivate = function(self)
+	if InCombatLockdown() then 
+		-- Make sure we deactivate later
+		dockAlertCombatActive = true 
+		return 
+	end
 	self:SetHeight(1)
 end
 

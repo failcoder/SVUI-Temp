@@ -1005,7 +1005,7 @@ local Dragger = CreateFrame("Frame", nil);
 Dragger.Frames = {};
 
 local function SetDraggablePoint(frame, data)
-	if((not frame) or (not data)) then return; end
+	if(InCombatLockdown() or (not frame) or (not data)) then return; end
 	local frameName = frame:GetName()
 	local point = Dragger.Frames[frameName];
 	if(point and (type(point) == "string") and (point ~= 'TBD')) then
@@ -1172,6 +1172,7 @@ local DraggerEventHandler = function(self, event, ...)
 		self:UnregisterEvent("UPDATE_WORLD_STATES")
 		self:UnregisterEvent("WORLD_STATE_TIMER_START")
 		self:UnregisterEvent("WORLD_STATE_UI_TIMER_UPDATE")
+		self:UnregisterEvent("TALKINGHEAD_REQUESTED");
 		self:SetScript("OnEvent", nil)
 	end
 end
@@ -1189,6 +1190,7 @@ function Dragger:New(frameName)
 			self:RegisterEvent("UPDATE_WORLD_STATES")
 			self:RegisterEvent("WORLD_STATE_TIMER_START")
 			self:RegisterEvent("WORLD_STATE_UI_TIMER_UPDATE")
+			self:RegisterEvent("TALKINGHEAD_REQUESTED");
 			self:SetScript("OnEvent", DraggerEventHandler)
 			self.EventsActive = true;
 		end
@@ -1230,6 +1232,7 @@ function Dragger:Reset()
 		self:RegisterEvent("UPDATE_WORLD_STATES")
 		self:RegisterEvent("WORLD_STATE_TIMER_START")
 		self:RegisterEvent("WORLD_STATE_UI_TIMER_UPDATE")
+		self:RegisterEvent("TALKINGHEAD_REQUESTED");
 		self:SetScript("OnEvent", DraggerEventHandler)
 		self.EventsActive = true;
 	end
@@ -1382,7 +1385,7 @@ local function InitializeMovables()
 		Dragger:RegisterEvent("UPDATE_WORLD_STATES")
 		Dragger:RegisterEvent("WORLD_STATE_TIMER_START")
 		Dragger:RegisterEvent("WORLD_STATE_UI_TIMER_UPDATE")
-
+		Dragger:RegisterEvent("TALKINGHEAD_REQUESTED");
 		DraggerEventHandler(Dragger)
 		Dragger:SetScript("OnEvent", DraggerEventHandler)
 

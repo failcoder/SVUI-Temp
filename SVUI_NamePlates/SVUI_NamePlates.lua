@@ -72,6 +72,7 @@ PLATE UPDATE HANDLERS
 ##########################################################
 ]]--
 function _hook_NamePlateDriverMixin(self, event, ...)
+	--DEFAULT_CHAT_FRAME:AddMessage("[SVUI] event caught: "..event)
 	if event == "NAME_PLATE_CREATED" then
 		local frame = ...;
 		if(not PlateRegistry[frame]) then
@@ -91,24 +92,21 @@ function _hook_NamePlateDriverMixin(self, event, ...)
 		local namePlateUnitToken = ...;
 		local frame = C_NamePlate.GetNamePlateForUnit(namePlateUnitToken);
 		PlateUpdate(frame)
-	elseif event == "PLAYER_TARGET_CHANGED" then
-		-- DO STUFF
-	elseif event == "DISPLAY_SIZE_CHANGED" then
-		-- DO STUFF
-	elseif event == "RAID_TARGET_UPDATE" then
-		-- DO STUFF
-	elseif ( event == "UNIT_FACTION" ) then
-		-- DO STUFF
+	-- elseif event == "PLAYER_TARGET_CHANGED" then
+	-- 	-- DO STUFF
+	-- elseif event == "DISPLAY_SIZE_CHANGED" then
+	-- 	-- DO STUFF
+	-- elseif event == "RAID_TARGET_UPDATE" then
+	-- 	-- DO STUFF
+	-- elseif ( event == "UNIT_FACTION" ) then
+	-- 	-- DO STUFF
 	end
 end
 
 function PlateUpdate(source)
 	local plate = source.UnitFrame;
 	if(not plate) then return end;
-	plate.healthBar:SetStatusBarTexture(NPBarTex)
-	plate.castBar:SetStatusBarTexture(NPBarTex)
-	plate.name:SetFontObject(SVUI_Font_NamePlate)
-	plate.name:SetTextColor(1, 1, 1)
+	UpdateThisPlate(plate);
 end
 
 function PlateForge(source)
@@ -122,6 +120,15 @@ function PlateForge(source)
 	PlateRegistry[source] = true;
 	PlateUpdate(source)
 end
+
+function UpdateThisPlate(plate)
+	if(not plate) then return end;
+	plate.healthBar:SetStatusBarTexture(NPBarTex)
+	plate.castBar:SetStatusBarTexture(NPBarTex)
+	plate.name:SetFontObject(SVUI_Font_NamePlate)
+	plate.name:SetTextColor(1, 1, 1)
+end
+
 --[[
 ##########################################################
 EVENTS
@@ -172,6 +179,16 @@ function MOD:UpdateLocals()
 	end
 end
 
+
+function MOD:UpdateAllPlates()
+	self:UpdateLocals()
+	for plate, _ in pairs(VisiblePlates) do
+		if(plate) then
+			UpdateThisPlate(plate)
+		end
+	end
+end
+
 function MOD:CombatToggle(noToggle)
 	if(NPCombatHide) then
 		self:RegisterEvent("PLAYER_REGEN_DISABLED")
@@ -203,7 +220,8 @@ function MOD:Load()
 	self:UpdateLocals()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("PLAYER_TARGET_CHANGED")
-	NamePlateDriverFrame:HookScript("OnEvent", _hook_NamePlateDriverMixin)
+
+    NamePlateDriverFrame:HookScript("OnEvent", _hook_NamePlateDriverMixin)
 
 	if (ClassNameplateManaBarFrame) then
 		ClassNameplateManaBarFrame:SetStyle("Frame", "Bar")
