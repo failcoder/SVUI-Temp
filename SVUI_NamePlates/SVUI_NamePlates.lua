@@ -1222,14 +1222,18 @@ end
 function UnitFrameMixin:UpdateStatusBar()
 	self.healthBar:SetStatusBarTexture(config.StatusbarTexture, 'BACKGROUND', 1)
 	self.castBar:SetStatusBarTexture(config.StatusbarTexture, 'BACKGROUND', 1)
-	if not UnitIsUnit('player', self.displayedUnit) then 
+	if not UnitIsUnit(self.displayedUnit,'player') then 
 		self.level:SetText(UnitLevel(self.displayedUnit))
-		MOD.Colorize(self)
+
 		if config.SuperStyled and MOD.IsEliteUnit(self.displayedUnit) then 
 			self.healthBar.eliteborder:Show() 
 		else
 			self.healthBar.eliteborder:Hide() 
 		end
+		MOD.Colorize(self)
+	else
+		self.level:SetText(nil)
+		self.healthBar.eliteborder:Hide() 
 	end
 end
 
