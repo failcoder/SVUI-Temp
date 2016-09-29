@@ -31,10 +31,6 @@ local gmatch, gsub = string.gmatch, string.gsub;
 local abs, ceil, floor, round = math.abs, math.ceil, math.floor, math.round;  -- Basic
 --[[ TABLE METHODS ]]--
 local twipe, tsort = table.wipe, table.sort;
-local GetEquippedArtifactInfo = _G.C_ArtifactUI.GetEquippedArtifactInfo
-local GetNumArtifactTraitsPurchasableFromXP = _G.MainMenuBar_GetNumArtifactTraitsPurchasableFromXP
-local HasArtifactEquipped = _G.HasArtifactEquipped
-local GetCostForPointAtRank = _G.C_ArtifactUI.GetCostForPointAtRank;
 --[[
 ##########################################################
 GET ADDON DATA
@@ -43,8 +39,42 @@ GET ADDON DATA
 local SV = select(2, ...)
 local L = SV.L
 local Reports = SV.Reports;
--- JV: I may change to use LibArtifactData if direct access proves unsafe/unreliable. 
---local LAD = LibStub("LibArtifactData-1.0");
+local LAD = LibStub("LibArtifactData-1.0");
+
+--[[
+##########################################################
+UTILITIES
+##########################################################
+]]--
+local function GetArtifactData()
+	local artID, data = LAD:GetArtifactInfo()
+	if not artID then return false end
+	return true, data.numRanksPurchased, data.unspentPower, data.maxPower , data.numRanksPurchasable
+end
+
+local function SetTooltipText(report)
+	Reports:SetDataTip(report)
+	local isEquipped,rank, currentPower,powerToNextLevel,pointsToSpend = GetArtifactData()
+	Reports.ToolTip:AddLine(L["Artifact Power"])
+	Reports.ToolTip:AddLine(" ")
+
+	if isEquipped then
+		local calc1 = (currentPower / powerToNextLevel) * 100;
+		Reports.ToolTip:AddDoubleLine(L["Rank:"], (" %d "):format(rank), 1, 1, 1)
+		Reports.ToolTip:AddDoubleLine(L["Current Artifact Power:"], (" %d  /  %d (%d%%)"):format(currentPower, powerToNextLevel, calc1), 1, 1, 1)
+		Reports.ToolTip:AddDoubleLine(L["Remaining:"], (" %d "):format(powerToNextLevel - currentPower), 1, 1, 1)
+		Reports.ToolTip:AddDoubleLine(L["Points to Spend:"], format(" %d ", pointsToSpend), 1, 1, 1)
+	else
+		Reports.ToolTip:AddDoubleLine(L["No Artifact"])		
+	end
+end
+
+local function FormatPower(rank, currentPower, powerForNextPoint, pointsToSpend)
+	local currentText = ("%d(+%d) %d/%d"):format(rank, pointsToSpend, currentPower, powerForNextPoint);
+	return currentText
+end
+
+
 --[[
 ##########################################################
 REPORT TEMPLATE
@@ -63,46 +93,8 @@ local Report = Reports:NewReport(REPORT_NAME, {
 	icon = [[Interface\Addons\SVUI_!Core\assets\icons\SVUI]]
 });
 
-
-local function GetArtifactData()
-	if HasArtifactEquipped() then
-		local itemID, _, _, _, totalPoints, pointsSpent, _, _, _, _, _, _ = GetEquippedArtifactInfo()
-
-		local pointsToSpend, currentPower, powerForNextPoint = GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalPoints)
-    	return true, tonumber(pointsSpent), tonumber(currentPower), tonumber(powerForNextPoint), tonumber(pointsToSpend)
-	else
-        return false --, nil,nil,nil,nil
-    end
-end
-
-local function SetTooltipText(self)
-	Reports:SetDataTip(self)
-	local isEquipped,rank, currentPower,powerToNextLevel,pointsToSpend = GetArtifactData()
-	Reports.ToolTip:AddLine(L["Artifact Power"])
-	Reports.ToolTip:AddLine(" ")
-
-	if isEquipped then
-		local calc1 = (currentPower / powerToNextLevel) * 100;
-		Reports.ToolTip:AddDoubleLine(L["Rank:"], (" %d "):format(rank), 1, 1, 1)
-		Reports.ToolTip:AddDoubleLine(L["Current Artifact Power:"], (" %d  /  %d (%d%%)"):format(currentPower, powerToNextLevel, calc1), 1, 1, 1)
-		Reports.ToolTip:AddDoubleLine(L["Remaining:"], (" %d "):format(powerToNextLevel - currentPower), 1, 1, 1)
-		Reports.ToolTip:AddDoubleLine(L["Points to Spend:"], format(" %d ", pointsToSpend), 1, 1, 1)
-	else
-		Reports.ToolTip:AddDoubleLine(L["No Artifact"])		
-	end
-end
-
-local function FormatPower(rank, currentPower, powerForNextPoint, pointsToSpend)
-
-	local currentText = ("%d(+%d) %d/%d"):format(rank, pointsToSpend, currentPower, powerForNextPoint);
-	return currentText
-end
-
-Report.events = {"PLAYER_ENTERING_WORLD", "ARTIFACT_XP_UPDATE", "UNIT_INVENTORY_CHANGED"};
-
-Report.OnEvent = function(self, event, ...)
-	local subset = self.ExpKey or "XP";
-	if self.barframe:IsShown()then
+Report.Populate = function(self)
+	if self.barframe:IsShown() then
 		self.text:SetAllPoints(self)
 		self.text:SetJustifyH("CENTER")
 		self.barframe:Hide()
@@ -123,9 +115,16 @@ Report.OnEnter = function(self)
 	Reports:ShowDataTip()
 end
 
--- Report.OnInit = function(self)
--- 	LibArtifactData:ForceUpdate()
--- end
+Report.OnInit = function(self)
+	LAD:ForceUpdate();
+	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
+		Report.Populate(self)
+	end)
+	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
+		Report.Populate(self)
+	end)
+	Report.Populate(self)
+end
 
 --[[
 ##########################################################
@@ -139,9 +138,7 @@ local ReportBar = Reports:NewReport(BAR_NAME, {
 	icon = [[Interface\Addons\SVUI_!Core\assets\icons\SVUI]]
 });
 
-ReportBar.events = {"PLAYER_ENTERING_WORLD", "ARTIFACT_XP_UPDATE", "UNIT_INVENTORY_CHANGED"};
-
-ReportBar.OnEvent = function(self, event, ...)
+ReportBar.Populate = function(self)
 	if (not self.barframe:IsShown())then
 		self.barframe:Show()
 		self.barframe.icon.texture:SetTexture(SV.media.dock.artifactLabel)
@@ -153,7 +150,11 @@ ReportBar.OnEvent = function(self, event, ...)
 		bar:SetMinMaxValues(0, powerToNextLevel)
 		bar:SetValue(currentPower)
 		bar:SetStatusBarColor(0.9, 0.64, 0.37)
-		self.text:SetText(rank)
+		local toSpend = "" 
+		if pointsToSpend>0 then
+			toSpend = " (+"..pointsToSpend..")"
+		end
+		self.text:SetText(rank..toSpend)
 	else
 		bar:SetMinMaxValues(0, 1)
 		bar:SetValue(0)
@@ -166,7 +167,13 @@ ReportBar.OnEnter = function(self)
 	Reports:ShowDataTip()
 end
 
--- ReportBar.OnInit = function(self)
--- 	LibArtifactData:ForceUpdate()
--- end
-
+ReportBar.OnInit = function(self)
+	LAD:ForceUpdate();
+	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
+		ReportBar.Populate(self)
+	end)
+	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
+		ReportBar.Populate(self)
+	end)
+	ReportBar.Populate(self)
+end

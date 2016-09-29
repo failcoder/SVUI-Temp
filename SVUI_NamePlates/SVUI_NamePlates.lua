@@ -1218,6 +1218,7 @@ function UnitFrameMixin:UpdateThreat()
 	end
 	tex:Hide() 
 end
+
 function UnitFrameMixin:UpdateStatusBar()
 	self.healthBar:SetStatusBarTexture(config.StatusbarTexture, 'BACKGROUND', 1)
 	self.castBar:SetStatusBarTexture(config.StatusbarTexture, 'BACKGROUND', 1)
