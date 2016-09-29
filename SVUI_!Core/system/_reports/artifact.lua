@@ -44,7 +44,7 @@ local SV = select(2, ...)
 local L = SV.L
 local Reports = SV.Reports;
 -- JV: I may change to use LibArtifactData if direct access proves unsafe/unreliable. 
---local LibArtifactData = LibStub("LibArtifactData-1.0");
+--local LAD = LibStub("LibArtifactData-1.0");
 --[[
 ##########################################################
 REPORT TEMPLATE
