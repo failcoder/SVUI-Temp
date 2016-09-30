@@ -110,9 +110,7 @@ local Report = Reports:NewReport(REPORT_NAME, {
 Report.events = {"PLAYER_ENTERING_WORLD"};
 
 Report.OnEvent = function(self, event, ...)
-	LAD.RegisterCallback(self,"ARTIFACT_SCAN_COMPLETE", function () 	
-		Report.Populate(self)
-	end)
+	Report.Populate(self)
 end
 
 Report.Populate = function(self)
@@ -139,12 +137,15 @@ end
 
 Report.OnInit = function(self)
 	LAD.RegisterCallback(self,"ARTIFACT_ADDED", function () 
+		Debug("Report: Caught Artifact Added")
 		Report.Populate(self)
 	end)
-	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
+	LAD.RegisterCallback(self,"ARTIFACT_ACTIVE_CHANGED", function () 	
+		Debug("Report: Caught Artifact active changed")
 		Report.Populate(self)
 	end)
-	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
+	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 
+		Debug("Report: Caught Artifact power changed")	
 		Report.Populate(self)
 	end)
 end
@@ -164,9 +165,7 @@ local ReportBar = Reports:NewReport(BAR_NAME, {
 ReportBar.events = {"PLAYER_ENTERING_WORLD"};
 
 ReportBar.OnEvent = function(self, event, ...)
-	LAD.RegisterCallback(self,"ARTIFACT_SCAN_COMPLETE", function () 	
-		ReportBar.Populate(self)
-	end)
+	ReportBar.Populate(self)
 end
 
 ReportBar.Populate = function(self)
@@ -200,13 +199,16 @@ ReportBar.OnEnter = function(self)
 end
 
 ReportBar.OnInit = function(self)
-	LAD.RegisterCallback(self,"ARTIFACT_ADDED", function () 	
+	LAD.RegisterCallback(self,"ARTIFACT_ADDED", function () 
+		Debug("Report: Caught Artifact Added")
 		ReportBar.Populate(self)
 	end)
-	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
+	LAD.RegisterCallback(self,"ARTIFACT_ACTIVE_CHANGED", function () 	
+		Debug("Report: Caught Artifact active changed")
 		ReportBar.Populate(self)
 	end)
-	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
+	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 
+		Debug("Report: Caught Artifact power changed")	
 		ReportBar.Populate(self)
 	end)
 end
