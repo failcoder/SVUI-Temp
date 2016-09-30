@@ -28,7 +28,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ]]
 local MAJOR_VERSION = "LibButtonGlow-1.0"
-local MINOR_VERSION = 6
+local MINOR_VERSION = 4
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub.") end
 local lib, oldversion = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
@@ -68,13 +68,12 @@ local function CreateScaleAnim(group, target, order, duration, x, y, delay)
 	end
 end
 
-local function CreateAlphaAnim(group, target, order, duration, fromAlpha, toAlpha, delay)
+local function CreateAlphaAnim(group, target, order, duration, change, delay)
 	local alpha = group:CreateAnimation("Alpha")
 	alpha:SetTarget(target:GetName())
 	alpha:SetOrder(order)
 	alpha:SetDuration(duration)
-	alpha:SetFromAlpha(fromAlpha)
-	alpha:SetToAlpha(toAlpha)
+	alpha:SetChange(change)
 
 	if delay then
 		alpha:SetStartDelay(delay)
@@ -163,25 +162,25 @@ local function CreateOverlayGlow()
 	-- setup antimations
 	overlay.animIn = overlay:CreateAnimationGroup()
 	CreateScaleAnim(overlay.animIn, overlay.spark,          1, 0.2, 1.5, 1.5)
-	CreateAlphaAnim(overlay.animIn, overlay.spark,          1, 0.2, 0, 1)
+	CreateAlphaAnim(overlay.animIn, overlay.spark,          1, 0.2, 1)
 	CreateScaleAnim(overlay.animIn, overlay.innerGlow,      1, 0.3, 2, 2)
 	CreateScaleAnim(overlay.animIn, overlay.innerGlowOver,  1, 0.3, 2, 2)
-	CreateAlphaAnim(overlay.animIn, overlay.innerGlowOver,  1, 0.3, 1, 0)
+	CreateAlphaAnim(overlay.animIn, overlay.innerGlowOver,  1, 0.3, -1)
 	CreateScaleAnim(overlay.animIn, overlay.outerGlow,      1, 0.3, 0.5, 0.5)
 	CreateScaleAnim(overlay.animIn, overlay.outerGlowOver,  1, 0.3, 0.5, 0.5)
-	CreateAlphaAnim(overlay.animIn, overlay.outerGlowOver,  1, 0.3, 1, 0)
+	CreateAlphaAnim(overlay.animIn, overlay.outerGlowOver,  1, 0.3, -1)
 	CreateScaleAnim(overlay.animIn, overlay.spark,          1, 0.2, 2/3, 2/3, 0.2)
-	CreateAlphaAnim(overlay.animIn, overlay.spark,          1, 0.2, 1, 0, 0.2)
-	CreateAlphaAnim(overlay.animIn, overlay.innerGlow,      1, 0.2, 1, 0, 0.3)
-	CreateAlphaAnim(overlay.animIn, overlay.ants,           1, 0.2, 0, 1, 0.3)
+	CreateAlphaAnim(overlay.animIn, overlay.spark,          1, 0.2, -1, 0.2)
+	CreateAlphaAnim(overlay.animIn, overlay.innerGlow,      1, 0.2, -1, 0.3)
+	CreateAlphaAnim(overlay.animIn, overlay.ants,           1, 0.2, 1, 0.3)
 	overlay.animIn:SetScript("OnPlay", AnimIn_OnPlay)
 	overlay.animIn:SetScript("OnFinished", AnimIn_OnFinished)
 
 	overlay.animOut = overlay:CreateAnimationGroup()
-	CreateAlphaAnim(overlay.animOut, overlay.outerGlowOver, 1, 0.2, 0, 1)
-	CreateAlphaAnim(overlay.animOut, overlay.ants,          1, 0.2, 1, 0)
-	CreateAlphaAnim(overlay.animOut, overlay.outerGlowOver, 2, 0.2, 1, 0)
-	CreateAlphaAnim(overlay.animOut, overlay.outerGlow,     2, 0.2, 1, 0)
+	CreateAlphaAnim(overlay.animOut, overlay.outerGlowOver, 1, 0.2, 1)
+	CreateAlphaAnim(overlay.animOut, overlay.ants,          1, 0.2, -1)
+	CreateAlphaAnim(overlay.animOut, overlay.outerGlowOver, 2, 0.2, -1)
+	CreateAlphaAnim(overlay.animOut, overlay.outerGlow,     2, 0.2, -1)
 	overlay.animOut:SetScript("OnFinished", OverlayGlowAnimOutFinished)
 
 	-- scripts
@@ -211,7 +210,6 @@ function lib.ShowOverlayGlow(frame)
 		local overlay = GetOverlayGlow()
 		local frameWidth, frameHeight = frame:GetSize()
 		overlay:SetParent(frame)
-		overlay:SetFrameLevel(frame:GetFrameLevel() + 5)
 		overlay:ClearAllPoints()
 		--Make the height/width available before the next frame:
 		overlay:SetSize(frameWidth * 1.4, frameHeight * 1.4)

@@ -41,20 +41,34 @@ local L = SV.L
 local Reports = SV.Reports;
 local LAD = LibStub("LibArtifactData-1.0");
 
+--Debug
+local Debug
+if AdiDebug then
+	Debug = AdiDebug:GetSink("Reports")
+else
+	Debug = function() end
+end
+
 --[[
 ##########################################################
 UTILITIES
 ##########################################################
 ]]--
 local function GetArtifactData()
-	local artID, data = LAD:GetArtifactInfo()
+	local artID = LAD:GetActiveArtifactID()
+	Debug("GetArtifactData - GetActiveArtifactID returned artID: ",artID)	
 	if not artID then return false end
+
+	local data = nil
+	artID, data = LAD:GetArtifactInfo(artID)
+	if not artID then return false end
+	
 	return true, data.numRanksPurchased, data.unspentPower, data.maxPower , data.numRanksPurchasable
 end
 
 local function SetTooltipText(report)
 	Reports:SetDataTip(report)
-	local isEquipped,rank, currentPower,powerToNextLevel,pointsToSpend = GetArtifactData()
+	local isEquipped, rank, currentPower,powerToNextLevel,pointsToSpend = GetArtifactData()
 	Reports.ToolTip:AddLine(L["Artifact Power"])
 	Reports.ToolTip:AddLine(" ")
 
@@ -93,6 +107,14 @@ local Report = Reports:NewReport(REPORT_NAME, {
 	icon = [[Interface\Addons\SVUI_!Core\assets\icons\SVUI]]
 });
 
+Report.events = {"PLAYER_ENTERING_WORLD"};
+
+Report.OnEvent = function(self, event, ...)
+	LAD.RegisterCallback(self,"ARTIFACT_SCAN_COMPLETE", function () 	
+		Report.Populate(self)
+	end)
+end
+
 Report.Populate = function(self)
 	if self.barframe:IsShown() then
 		self.text:SetAllPoints(self)
@@ -116,14 +138,15 @@ Report.OnEnter = function(self)
 end
 
 Report.OnInit = function(self)
-	LAD:ForceUpdate();
+	LAD.RegisterCallback(self,"ARTIFACT_ADDED", function () 
+		Report.Populate(self)
+	end)
 	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
 		Report.Populate(self)
 	end)
 	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
 		Report.Populate(self)
 	end)
-	Report.Populate(self)
 end
 
 --[[
@@ -138,14 +161,23 @@ local ReportBar = Reports:NewReport(BAR_NAME, {
 	icon = [[Interface\Addons\SVUI_!Core\assets\icons\SVUI]]
 });
 
+ReportBar.events = {"PLAYER_ENTERING_WORLD"};
+
+ReportBar.OnEvent = function(self, event, ...)
+	LAD.RegisterCallback(self,"ARTIFACT_SCAN_COMPLETE", function () 	
+		ReportBar.Populate(self)
+	end)
+end
+
 ReportBar.Populate = function(self)
 	if (not self.barframe:IsShown())then
 		self.barframe:Show()
 		self.barframe.icon.texture:SetTexture(SV.media.dock.artifactLabel)
 	end
-
 	local bar = self.barframe.bar;
-	local isEquipped,rank, currentPower,powerToNextLevel,pointsToSpend = GetArtifactData()
+
+	local isEquipped, rank, currentPower, powerToNextLevel, pointsToSpend = GetArtifactData()
+
 	if isEquipped then
 		bar:SetMinMaxValues(0, powerToNextLevel)
 		bar:SetValue(currentPower)
@@ -168,12 +200,13 @@ ReportBar.OnEnter = function(self)
 end
 
 ReportBar.OnInit = function(self)
-	LAD:ForceUpdate();
+	LAD.RegisterCallback(self,"ARTIFACT_ADDED", function () 	
+		ReportBar.Populate(self)
+	end)
 	LAD.RegisterCallback(self,"ARTIFACT_EQUIPPED_CHANGED", function () 	
 		ReportBar.Populate(self)
 	end)
 	LAD.RegisterCallback(self,"ARTIFACT_POWER_CHANGED", function () 	
 		ReportBar.Populate(self)
 	end)
-	ReportBar.Populate(self)
 end

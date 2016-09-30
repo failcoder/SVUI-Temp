@@ -9,5 +9,9 @@
 ## X-Curse-Project-Name: LibStub
 ## X-Curse-Project-ID: libstub
 ## X-Curse-Repository-ID: wow/libstub/mainline
+## X-Curse-Packaged-Version: r20160818004824
+## X-Curse-Project-Name: SuperVillain UI: ActionBars
+## X-Curse-Project-ID: supervillain-ui-actionbars
+## X-Curse-Repository-ID: wow/supervillain-ui-actionbars/mainline
 
 LibStub.lua
