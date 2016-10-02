@@ -112,7 +112,7 @@ UIPanels["ReportPlayerNameDialog"] 			= { moving = false, snapped = false, canup
 UIPanels["RolePollPopup"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = true };
 UIPanels["SpellBookFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["TabardFrame"] 					= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
-UIPanels["TalkingHeadFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
+--UIPanels["TalkingHeadFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["TaxiFrame"] 						= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["TimeManagerFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
 UIPanels["TradeSkillFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };

@@ -60,6 +60,7 @@ local GetNumSpecGroups    	= _G.GetNumSpecGroups;
 local GetActiveSpecGroup    = _G.GetActiveSpecGroup;
 local SetActiveSpecGroup    = _G.SetActiveSpecGroup;
 local GetSpecializationInfo = _G.GetSpecializationInfo;
+local GetToyInfo            = _G.C_ToyBox.GetToyInfo;  
 --[[
 ##########################################################
 ADDON
@@ -130,6 +131,12 @@ local function GetHearthOption(selected)
 					if(test and type(test) == 'string') then
 						local owned = GetItemCount(optionID,false)
 						if(owned and owned > 0) then
+							option = test;
+						end
+					else
+						--JV: 20161002 - Fix for #66 Toys no longer return data from GetItemInfo
+						local _,test,_,collected = GetToyInfo(optionID)
+						if (test and type(test) == 'string') and collected then
 							option = test;
 						end
 					end
@@ -234,6 +241,7 @@ local Hearth_OnShiftRightClick = function(self)
 		SV.Dropdown:Open(self, t, HEARTH_HEADER);
 	end
 end
+
 
 local SpecSwap_OnClick = function(self)
 	if InCombatLockdown() then return end
