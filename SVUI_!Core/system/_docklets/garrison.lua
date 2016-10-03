@@ -166,6 +166,8 @@ local GarrisonButton_OnEvent = function(self, event, ...)
 		self:StartAlert();
 	elseif ( event == "GARRISON_MISSION_NPC_OPENED" ) then
 		self:StopAlert();
+	elseif ( event == "GARRISON_SHIPYARD_NPC_OPENED" ) then
+		self:StopAlert();
 	elseif (event == "GARRISON_INVASION_AVAILABLE") then
 		self:StartAlert();
 	elseif (event == "GARRISON_INVASION_UNAVAILABLE") then
@@ -343,6 +345,7 @@ local function LoadToolBarGarrison()
 	garrison:RegisterEvent("GARRISON_ARCHITECT_OPENED");
 	garrison:RegisterEvent("GARRISON_MISSION_FINISHED");
 	garrison:RegisterEvent("GARRISON_MISSION_NPC_OPENED");
+	garrison:RegisterEvent("GARRISON_SHIPYARD_NPC_OPENED");
 	garrison:RegisterEvent("GARRISON_INVASION_AVAILABLE");
 	garrison:RegisterEvent("GARRISON_INVASION_UNAVAILABLE");
 	garrison:RegisterEvent("SHIPMENT_UPDATE");

@@ -62,8 +62,9 @@ local function GetArtifactData()
 	local data = nil
 	artID, data = LAD:GetArtifactInfo(artID)
 	if not artID then return false end
+	Debug()
 	
-	return true, data.numRanksPurchased, data.unspentPower, data.maxPower , data.numRanksPurchasable
+	return true, data.numRanksPurchased, data.power, data.maxPower , data.numRanksPurchasable
 end
 
 local function SetTooltipText(report)

@@ -191,6 +191,7 @@ function MOD:InitializeMicroBar()
 	NewHook('UpdateMicroButtonsParent', SVUIMicroButtonsParent)
 	NewHook('MoveMicroButtons', RefreshMicrobar)
 	NewHook('UpdateMicroButtons', MOD.UpdateMicroButtons)
+	NewHook('GuildMicroButtonTabard_UpdateTabard', MOD.UpdateMicroButtons)
 
 	SVUIMicroButtonsParent(microBar)
 	SVUIMicroButton_SetNormal()
