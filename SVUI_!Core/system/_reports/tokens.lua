@@ -163,6 +163,7 @@ end
 local function TokenInquiry(id, weekly, cap)
 	--name, amount, texturePath, earnedThisWeek, weeklyMax, totalMax, isDiscovered = GetCurrencyInfo(id)
 	local name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(id)
+	local max = maxed or cap -- If there's a maxed value returned, use that not our default - e.g. Ancient Mana
 	local r, g, b = 1, 1, 1
 	for i = 1, GetNumWatchedTokens() do
 		local _, _, _, itemID = GetBackpackCurrencyInfo(i)
@@ -182,9 +183,9 @@ local function TokenInquiry(id, weekly, cap)
 	-- 		Reports.ToolTip:AddDoubleLine(texStr, altStr, r, g, b, r, g, b)
 	-- 	end
 	-- elseif capped then
-	if cap > 0 then
+	if max > 0 then
 		if discovered then
-			altStr = ("%d / %d"):format(amount, cap)
+			altStr = ("%d / %d"):format(amount, max)
 			Reports.ToolTip:AddDoubleLine(texStr, altStr, r, g, b, r, g, b)
 		end
 	else

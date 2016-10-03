@@ -26,6 +26,8 @@ GET ADDON DATA
 ]]--
 local SV = select(2, ...)
 local L = SV.L
+
+local LIUI = LibStub("LibItemUpgradeInfo-1.0");
 --[[
 ##########################################################
 LOCAL VARS
@@ -171,41 +173,43 @@ do
     end
 
     function ParseItemLevel(unit, itemLink)
-        local name, link, quality;
-        local iLevel = 0;
-        if(itemLink and type(itemLink) == "string") then
-          name, link, quality, iLevel = GetItemInfo(itemLink)
-          local itemId = tonumber(itemLink:match("item:%d+:%d+:%d+:%d+:%d+:%d+:%-?%d+:%-?%d+:%d+:%d+:(%d+)"))
-          if iLevel and itemId then
-              if(quality == 7) then
-                  iLevel = _getHeirloomLevel(unit, itemId)
-              end
-          end
-        end
-        return iLevel or 0
+        -- local name, link, quality;
+        -- local iLevel = 0;
+        -- if(itemLink and type(itemLink) == "string") then
+        --   name, link, quality, iLevel = GetItemInfo(itemLink)
+        --   local itemId = tonumber(itemLink:match("item:%d+:%d+:%d+:%d+:%d+:%d+:%-?%d+:%-?%d+:%d+:%d+:(%d+)"))
+        --   if iLevel and itemId then
+        --       if(quality == 7) then
+        --           iLevel = _getHeirloomLevel(unit, itemId)
+        --       end
+        --   end
+        -- end
+        -- return iLevel or 0
+        return LIUI:GetUpgradedItemLevel(itemLink) or 0
     end
 
     local function _getEquippedItemLevel(unit, itemLink)
-        local tooltip = _justthetip();
-        if(not tooltip) then return ParseItemLevel(unit, itemLink) end
-        tooltip:SetOwner(UIParent, "ANCHOR_NONE");
-        tooltip:SetHyperlink(itemLink);
-        tooltip:Show();
+        -- local tooltip = _justthetip();
+        -- if(not tooltip) then return ParseItemLevel(unit, itemLink) end
+        -- tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+        -- tooltip:SetHyperlink(itemLink);
+        -- tooltip:Show();
 
-        local iLevel = 0;
-        local tname = tooltip:GetName().."TextLeft%s";
-        for i = 2, tooltip:NumLines() do
-            local text = _G[tname:format(i)]:GetText();
-            if(text and text ~= "") then
-                local value = tonumber(text:match(iLevelFilter));
-                if(value) then
-                    iLevel = value;
-                end
-            end
-        end
+        -- local iLevel = 0;
+        -- local tname = tooltip:GetName().."TextLeft%s";
+        -- for i = 2, tooltip:NumLines() do
+        --     local text = _G[tname:format(i)]:GetText();
+        --     if(text and text ~= "") then
+        --         local value = tonumber(text:match(iLevelFilter));
+        --         if(value) then
+        --             iLevel = value;
+        --         end
+        --     end
+        -- end
 
-        tooltip:Hide();
-        return iLevel
+        -- tooltip:Hide();
+        -- return iLevel
+        return LIUI:GetUpgradedItemLevel(itemLink) or 0
     end
 
     local function _setLevelDisplay(frame, iLevel)

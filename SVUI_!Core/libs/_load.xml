@@ -8,4 +8,5 @@
 	<Include file="AceVillain-1.0\AceVillain-1.0.xml"/>
 	<Script file="LibArtifactData-1.0\LibArtifactData-1.0.lua"/>
 	<Script file="LibReputationData-1.0\LibReputationData-1.0.lua"/>	
+	<Script file="LibItemUpgradeInfo-1.0\Core.lua"/>	
 </Ui>
