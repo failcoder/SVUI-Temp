@@ -7,7 +7,7 @@ As this is non-offical (at present) I'm not publishing updates via curse and/or 
 To use, do as follows: 
 
 * Make sure WoW isn't running 
-* Go to your WoW "Interface\Addons" folder (Normally this would be "C:\Program Files\World of Warcraft\Interace\Addons")
+* Go to your WoW "Interface\Addons" folder (Normally this would be "C:\Program Files\World of Warcraft\Interface\Addons")
 * Delete all the SVUI_ folders
 * Go to the [SVUI-Temp project on GitHub](https://github.com/joev/SVUI-Temp)
 * Click the green "Clone or Download" button
