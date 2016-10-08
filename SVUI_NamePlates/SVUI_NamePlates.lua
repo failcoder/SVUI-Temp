@@ -506,7 +506,8 @@ function MOD:UpdateLocals()
 	config.StatusbarTexture = LSM:Fetch("statusbar", db.barTexture);
 
 	config.CombatHide = db.combatHide;
-	config.ComboPoimts = db.comboPoints;
+	config.ComboPoints = not db.comboPoints
+	MOD:ComboToggle()
 
 	config.SuperStyled = db.themed;
 
@@ -787,7 +788,8 @@ if (myclass == "ROGUE" or myclass=="DRUID") then
 		comboBar.ComboPoints[i].Point:SetVertexColor(unpack(NPComboColor[i]))
 	end
 		comboBar:SetSize(68, 1)
-		comboBar:SetFrameLevel(100) -- Make sure it's always on top, even over castBar...
+		comboBar:SetFrameStrata("HIGH")
+		comboBar:SetFrameLevel(40) -- Make sure it's always on top, even over castBar...
 end
 
 function DriverFrame:UpdateComboPointsBar()
@@ -815,8 +817,10 @@ function DriverFrame:UpdateComboPointsBar()
 	end
 	if (h) then
 		comboBar:ClearAllPoints()
-		comboBar:SetPoint("CENTER", h, "BOTTOM",0,-5)
+		comboBar:SetPoint("CENTER", h, "CENTER",0,0)
 		comboBar:SetSize(68, 1)
+		comboBar:SetFrameStrata("HIGH")
+		comboBar:SetFrameLevel(40) 
 	end
 end
 
