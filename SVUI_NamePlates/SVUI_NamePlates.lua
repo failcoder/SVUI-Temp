@@ -781,7 +781,9 @@ local _, myclass = UnitClass("player")
 if (myclass == "ROGUE" or myclass=="DRUID") then
 	comboBar=ClassNameplateBarRogueDruidFrame
 	comboBar:SetSize(68, 1)
+	comboBar:SetFrameStrata("HIGH")
 	comboBar:SetFrameLevel(50) -- Make sure it's always on top, even over castBar...
+
 	for i = 1, #comboBar.ComboPoints do
 		comboBar.ComboPoints[i].Background:SetTexture(nil)
 		comboBar.ComboPoints[i].Point:SetTexture(MOD.media.comboIcon)
@@ -816,8 +818,9 @@ function DriverFrame:UpdateComboPointsBar()
 	end
 	if (h) then
 		comboBar:ClearAllPoints()
-		comboBar:SetPoint("CENTER", h, "BOTTOM",0,-5)
+		comboBar:SetPoint("CENTER", h, "CENTER",0,0)
 		comboBar:SetSize(68, 1)
+		comboBar:SetFrameStrata("HIGH")
 		comboBar:SetFrameLevel(50)
 	end
 end
