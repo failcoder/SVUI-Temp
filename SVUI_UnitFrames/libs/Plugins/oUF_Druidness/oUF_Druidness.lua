@@ -162,9 +162,11 @@ local UpdateComboPoints = function(self, event, unit)
 					bar.PointShow(cpoints[i])
 				end
 			else
-				cpoints[i]:Hide()
-				if(bar.PointHide) then
-					bar.PointHide(cpoints[i], i)
+				if cpoints[i] then
+					cpoints[i]:Hide()
+					if(bar.PointHide) then
+						bar.PointHide(cpoints[i], i)
+					end
 				end
 			end
 		end

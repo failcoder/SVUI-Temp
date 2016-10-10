@@ -1023,7 +1023,7 @@ local function SetOverrides()
 	HelpOpenTicketButton:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT")
 
 	NewHook(VehicleSeatIndicator, "SetPoint", Vehicle_OnSetPoint)
-	VehicleSeatIndicator:SetPoint("TOPLEFT", MinimapCluster, "TOPLEFT", 2, 2)
+	-- May be taining MinimapCluster -- VehicleSeatIndicator:SetPoint("TOPLEFT", MinimapCluster, "TOPLEFT", 2, 2)
 
 	SVUI_WorldStateHolder:SetSize(200, 45)
 	SV:NewAnchor(SVUI_WorldStateHolder, L["Capture Bars"])

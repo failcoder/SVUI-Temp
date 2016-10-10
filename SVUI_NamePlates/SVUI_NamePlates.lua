@@ -763,6 +763,7 @@ MOD.CreatePlateBorder(manabar)
 manabar.border:SetPoint('TOPLEFT', manabar, -4, 6)
 manabar.border:SetPoint('BOTTOMRIGHT', manabar, 4, -6)
 manabar.border:SetVertexColor(unpack(config.Colors.Frame))
+manabar:SetFrameLevel(90)
 
 function ClassNameplateManaBarFrame:OnOptionsUpdated()
 	local width, height = C_NamePlate.GetNamePlateSelfSize();
@@ -779,15 +780,15 @@ local comboBar = nil
 local _, myclass = UnitClass("player")
 if (myclass == "ROGUE" or myclass=="DRUID") then
 	comboBar=ClassNameplateBarRogueDruidFrame
-
+	comboBar:SetSize(68, 1)
+	comboBar:SetFrameLevel(50) -- Make sure it's always on top, even over castBar...
 	for i = 1, #comboBar.ComboPoints do
 		comboBar.ComboPoints[i].Background:SetTexture(nil)
 		comboBar.ComboPoints[i].Point:SetTexture(MOD.media.comboIcon)
 		comboBar.ComboPoints[i].Point:SetSize(12, 12)
 		comboBar.ComboPoints[i].Point:SetVertexColor(unpack(NPComboColor[i]))
+		comboBar.ComboPoints[i]:SetFrameLevel(49)
 	end
-		comboBar:SetSize(68, 1)
-		comboBar:SetFrameLevel(100) -- Make sure it's always on top, even over castBar...
 end
 
 function DriverFrame:UpdateComboPointsBar()
@@ -817,6 +818,7 @@ function DriverFrame:UpdateComboPointsBar()
 		comboBar:ClearAllPoints()
 		comboBar:SetPoint("CENTER", h, "BOTTOM",0,-5)
 		comboBar:SetSize(68, 1)
+		comboBar:SetFrameLevel(50)
 	end
 end
 
@@ -907,7 +909,7 @@ function UnitFrameMixin:Create(unitframe)
 	local c = CreateFrame('StatusBar', '$parentCastBar', nameplate)
 	do
 		self.castBar = c
-		c:SetFrameLevel(95)
+		c:SetFrameLevel(90)
 		c:Hide()
 		c:SetStatusBarTexture(config.StatusbarTexture, 'BACKGROUND', 1)
 		c:SetBackdrop(Backdrop)
