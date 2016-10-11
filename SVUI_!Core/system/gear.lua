@@ -506,6 +506,11 @@ local function InitializeGearInfo()
 	ONLY_DAMAGED = SV.db.Gear.durability.onlydamaged
 	MAX_LEVEL, AVG_LEVEL = GetAverageItemLevel()
 
+
+  LoadAddOn("Blizzard_InspectUI")
+  SetDisplayStats("Character")
+  SetDisplayStats("Inspect")
+  
   GearHandler:RegisterEvent("PLAYER_ENTERING_WORLD")
 	GearHandler:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
 	GearHandler:RegisterEvent("PLAYER_EQUIPMENT_CHANGED")
@@ -515,9 +520,6 @@ local function InitializeGearInfo()
 	GearHandler:RegisterEvent("EQUIPMENT_SWAP_FINISHED")
 	GearHandler:SetScript("OnEvent", GearHandler_OnEvent)
 
-	LoadAddOn("Blizzard_InspectUI")
-	SetDisplayStats("Character")
-	SetDisplayStats("Inspect")
 	NewHook('InspectFrame_UpdateTabs', Gear_UpdateTabs)
 	SV.Timers:ExecuteTimer(SV.UpdateGearInfo, 10)
 	SV:GearSwap()

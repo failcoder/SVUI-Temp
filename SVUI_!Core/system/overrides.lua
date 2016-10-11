@@ -676,7 +676,7 @@ EventFunc["START_LOOT_ROLL"] = function(rollID, rollTime)
 	rollFrame.status:SetValue(rollTime)
 	rollFrame:SetPoint("CENTER",WorldFrame,"CENTER")
 	rollFrame:Show()
-	AlertFrame_FixAnchors()
+	-- Gone in Legion. AlertFrame_FixAnchors()
 	AutoGreed(rollID, quality, canBreak, bindOnPickUp)
 end
 EventFunc["LOOT_READY"] = function(autoLoot)
