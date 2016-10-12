@@ -164,9 +164,11 @@ local UpdateComboPoints = function(self, event, unit)
 		Debug("max combo points/current: ", MAX_COMBO_POINTS,current)
 		for i=1, MAX_COMBO_POINTS do
 			if(i <= current) then
-				cpoints[i]:Show()
-				if(bar.PointShow) then
-					bar.PointShow(cpoints[i])
+				if cpoints[i] then
+					cpoints[i]:Show()
+					if(bar.PointShow) then
+						bar.PointShow(cpoints[i])
+					end
 				end
 			else
 				if cpoints[i] then
