@@ -321,17 +321,17 @@ end
 
 local function GetActiveGear()
 	local count = GetNumEquipmentSets()
-	local resultSpec = GetActiveSpecGroup()
+	local resultSpec = GetSpecialization()
+  local _, sname = GetSpecializationInfo(resultSpec)
 	local resultSet
-  BG_SET = "none"
+
+  BG_SET = SV.db.Gear.battleground.equipmentset
 	SPEC_SET = "none"
-	if(resultSpec and GetSpecializationInfo(resultSpec) and (resultSpec ~= 1)) then
-    SPEC_SET = SV.db.Gear.specialization.secondary
-    BG_SET = SV.db.Gear.battleground.secondary
-  else
-    SPEC_SET = SV.db.Gear.specialization.primary
-    BG_SET = SV.db.Gear.battleground.primary
+
+	if(sname) then
+    SPEC_SET = SV.db.Gear.specialization[sname] or SPEC_SET
 	end
+
 	if(count == 0) then
 		return resultSpec,false
 	end
@@ -517,7 +517,7 @@ local function InitializeGearInfo()
 	GearHandler:RegisterEvent("SOCKET_INFO_UPDATE")
 	GearHandler:RegisterEvent("COMBAT_RATING_UPDATE")
 	GearHandler:RegisterEvent("MASTERY_UPDATE")
-	GearHandler:RegisterEvent("EQUIPMENT_SWAP_FINISHED")
+  GearHandler:RegisterEvent("EQUIPMENT_SWAP_FINISHED")
 	GearHandler:SetScript("OnEvent", GearHandler_OnEvent)
 
 	NewHook('InspectFrame_UpdateTabs', Gear_UpdateTabs)
