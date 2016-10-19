@@ -1,3 +1,20 @@
+# Update: failcoder (aka Munglunch) has returned! 
+
+This update is now defunct and we will go back to official releases once again. 
+
+Check out the usual places for this: 
+
+https://mods.curse.com/addons/wow/supervillain-ui
+
+http://www.wowinterface.com/downloads/fileinfo.php?id=23519#info
+
+The official GitHub repo is here: https://github.com/failcoder/supervillain-ui
+
+## Communications
+If you're looking for the most up to date information about what's happening with SuperVillain UI, Mentalo commands you to (please) join him (and other SuperVillains) on Discord: https://discord.gg/4VJdSsc
+
+-----
+
 # SVUI-Temp
 Temporary Repository for SuperVillain UI fixes until Munglunch/failcoder returns from absence.
 
@@ -16,5 +33,3 @@ To use, do as follows:
 * Start WoW
 * Post bugs (yes, there are still plenty :>) here: https://github.com/joev/SVUI-Temp/Issues
 
-## Communications
-If you're looking for the most up to date information about what's happening with this fan update of SVUI, Mentalo commands you to (please) join me (and other SuperVillains) on Discord: https://discord.gg/4VJdSsc
